@@ -1,4 +1,8 @@
 {
   "name": "MinimalTodoApp",
-  "displayName": "MinimalTodoApp"
+  "displayName": "MinimalTodoApp",
+  "expo": {
+    "name": "MinimalTodoApp",
+    "slug": "MinimalTodoApp"
+  }
 }

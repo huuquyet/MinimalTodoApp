@@ -7,21 +7,34 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "rm -rf dist/ && webpack --mode=production --config webpack.config.js",
+    "web": "webpack serve --mode=development --config webpack.config.js"
   },
   "dependencies": {
     "react": "^17.0.2",
-    "react-native": "^0.67.2"
+    "react-native": "^0.67.2",
+    "react-native-web": "^0.17.5"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-flow": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
     "@babel/runtime": "^7.17.2",
     "@react-native-community/eslint-config": "^3.0.1",
-    "babel-jest": "^27.5.1",
+    "@svgr/webpack": "^6.2.1",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-react-native-web": "^0.17.5",
     "eslint": "^8.9.0",
-    "jest": "^27.5.1",
+    "html-webpack-plugin": "^5.5.0",
     "metro-react-native-babel-preset": "^0.68.0",
-    "react-test-renderer": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
   },
   "jest": {
     "preset": "react-native"
