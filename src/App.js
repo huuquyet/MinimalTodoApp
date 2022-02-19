@@ -17,7 +17,7 @@ import {
   View,
 } from 'react-native';
 
-const Section = ({children, title}) => {
+const Section = ({children, title}): React$Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -25,7 +25,7 @@ const Section = ({children, title}) => {
         style={[
           styles.sectionTitle,
           {
-            // color: isDarkMode ? Colors.white : Colors.black,
+            color: isDarkMode ? 'white' : 'black',
           },
         ]}>
         {title}
@@ -34,7 +34,7 @@ const Section = ({children, title}) => {
         style={[
           styles.sectionDescription,
           {
-            // color: isDarkMode ? Colors.light : Colors.dark,
+            color: isDarkMode ? 'lightgrey' : 'dimgrey',
           },
         ]}>
         {children}
@@ -47,7 +47,7 @@ const App: () => React$Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    // backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? 'dimgrey' : 'lightgrey',
   };
 
   return (
@@ -57,11 +57,9 @@ const App: () => React$Node = () => {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <View
-          style={
-            {
-              // backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            }
-          }>
+          style={{
+            backgroundColor: isDarkMode ? 'black' : 'white',
+          }}>
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.js</Text> to change this
             screen and then come back to see your edits.

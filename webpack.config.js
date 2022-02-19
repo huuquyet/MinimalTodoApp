@@ -16,6 +16,7 @@ const babelLoaderConfiguration = {
     path.resolve(__dirname, 'public/index.web.js'), // Entry to your application
     path.resolve(__dirname, 'public/App.web.js'), // Change this to your main App file
     path.resolve(__dirname, 'src'),
+    path.resolve(__dirname, 'node_modules/react-native-vector-icons'),
     ...compileNodeModules,
   ],
   use: {
@@ -42,7 +43,7 @@ const svgLoaderConfiguration = {
 };
 
 const imageLoaderConfiguration = {
-  test: /\.(gif|jpe?g|png)$/,
+  test: /\.(gif|jpe?g|png|ttf)$/,
   use: {
     loader: 'url-loader',
     options: {
@@ -68,6 +69,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      },
       babelLoaderConfiguration,
       imageLoaderConfiguration,
       svgLoaderConfiguration,
