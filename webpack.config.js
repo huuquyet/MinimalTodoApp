@@ -28,7 +28,7 @@ const babelLoaderConfiguration = {
         '@babel/preset-react',
         '@babel/preset-flow',
       ],
-      plugins: ['react-native-web'],
+      plugins: ['react-native-web', '@babel/plugin-transform-runtime'],
     },
   },
 };
@@ -59,7 +59,7 @@ module.exports = {
   output: {
     path: path.resolve(appDirectory, 'dist'),
     publicPath: '/',
-    filename: 'rnw_blogpost.bundle.js',
+    filename: 'nhq.bundle.js',
   },
   resolve: {
     extensions: ['.web.tsx', '.web.ts', '.tsx', '.ts', '.web.js', '.js'],
