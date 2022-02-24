@@ -58,7 +58,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(appDirectory, 'dist'),
-    publicPath: '/',
+    publicPath: '',
     filename: 'nhq.bundle.js',
   },
   resolve: {
