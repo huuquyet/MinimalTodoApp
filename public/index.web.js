@@ -1,7 +1,7 @@
 import {AppRegistry} from 'react-native';
 
 import appInfo from '../app.json';
-import App from '../src/themes/App';
+import App from '../src/App';
 
 if (module.hot) {
   module.hot.accept();
