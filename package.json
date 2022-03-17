@@ -17,7 +17,6 @@
     "@expo/vector-icons": "^12.0.0",
     "@reduxjs/toolkit": "^1.8.0",
     "expo": "^43.0.0",
-    "expo-status-bar": "~1.2.0",
     "lodash": "^4.17.21",
     "nanoid": "^3.3.1",
     "native-base": "^3.3.7",

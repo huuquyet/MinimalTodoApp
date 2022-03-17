@@ -1,8 +1,8 @@
 import React from "react";
 import { Provider } from "react-redux";
 
-import store from "./store/initializeStore";
-import TodoApp from "./components/TodoApp";
+import store from "./src/store/initializeStore";
+import TodoApp from "./src/components/TodoApp";
 
 class App extends React.Component {
   render() {

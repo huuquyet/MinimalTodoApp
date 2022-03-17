@@ -2,25 +2,25 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Box,
+  Button,
   Checkbox,
+  HStack,
+  Icon,
   Tooltip,
   VStack,
-  HStack,
-  Button,
-  Icon,
 } from "native-base";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import {
-  availableColors,
-  capitalize,
-  statusFilters,
-} from "../common/constants";
 import {
   colorFilterChanged,
   statusFilterChanged,
 } from "../features/filtersSlice";
 import { markAllCompleted, allDoneRemoved } from "../features/todosSlice";
+import {
+  availableColors,
+  capitalize,
+  statusFilters,
+} from "../common/constants";
 
 const StatusFilter = ({ value: status, onChange }) => {
   const renderedFilters = Object.keys(statusFilters).map((key) => {
@@ -126,20 +126,3 @@ const FilterTodo = () => {
 };
 
 export default FilterTodo;
-
-const paperContainer = {
-  position: "fixed",
-  bottom: 0,
-  left: 0,
-  right: 0,
-  zIndex: 1,
-};
-
-const boxContainer = { maxWidth: "sm", mx: "auto", px: 3 };
-
-const formContainer = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  my: 1,
-};

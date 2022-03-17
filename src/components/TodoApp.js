@@ -8,11 +8,11 @@ import {
   Icon,
   NativeBaseProvider,
   Pressable,
+  StatusBar,
   Switch,
   Text,
   VStack,
 } from "native-base";
-import { StatusBar } from "expo-status-bar";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 import InputTodo from "./InputTodo";
