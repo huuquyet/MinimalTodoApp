@@ -56,7 +56,7 @@ const TodoApp = () => {
           <Pressable onPress={toggleColorMode}>
             <HStack>
               <Icon as={FontAwesome5} name="sun" size="sm" color="white" />
-              <Switch value={colorMode === "light"} />
+              <Switch value={colorMode !== "light"} />
               <Icon as={FontAwesome5} name="moon" size="sm" color="white" />
             </HStack>
           </Pressable>

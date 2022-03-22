@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  Checkbox,
   HStack,
   IconButton,
   Pressable,
-  Switch,
+  Select,
   Text,
   Tooltip,
 } from "native-base";
@@ -29,8 +30,7 @@ const SingleTodo = ({ id }) => {
     dispatch(todoToggled(todo.id));
   };
 
-  const handleColorChanged = (e) => {
-    const color = e.target.value;
+  const handleColorChanged = (color) => {
     dispatch(todoColorSelected(todo.id, color));
   };
 
@@ -40,12 +40,28 @@ const SingleTodo = ({ id }) => {
 
   return (
     <HStack p={1} space={1}>
-      <Switch value={completed} onToggle={handleCompletedChanged} />
+      <Checkbox
+        isChecked={completed}
+        onToggle={handleCompletedChanged}
+        accessibilityLabel="Completed"
+        value={text}
+      />
       <Pressable flexGrow={1} onPress={handleCompletedChanged}>
         <Text style={{ textDecoration: completed ? "line-through" : "none" }}>
           {text}
         </Text>
       </Pressable>
+      <Select
+        variant="underlined"
+        onValueChange={(color) => handleColorChanged(color)}
+        selectedValue={color}
+        accessibilityLabel="Color"
+        placeholder="Color"
+      >
+        {availableColors.map((color) => (
+          <Select.Item key={color} label={capitalize(color)} value={color} />
+        ))}
+      </Select>
       <Tooltip label="Remove">
         <IconButton
           onPress={onDelete}
