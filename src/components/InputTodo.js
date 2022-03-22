@@ -9,6 +9,7 @@ import {
   Input,
   Spinner,
   Tooltip,
+  useColorModeValue,
 } from "native-base";
 import { FontAwesome5 } from "@expo/vector-icons";
 
@@ -42,7 +43,7 @@ const InputTodo = () => {
   let placeholder = isLoading ? "" : "What needs to be done?";
 
   return (
-    <Box p={1} mt={2} shadow={2}>
+    <Box p={1} mt="60" shadow={2}>
       <HStack space={1} justifyContent="space-between">
         <Input
           variant="underlined"
@@ -55,10 +56,10 @@ const InputTodo = () => {
           h={10}
           w="90%"
           onChangeText={(text) => setText(text)}
+          bg={useColorModeValue("warmGray.50", "coolGray.800")}
         />
         <Tooltip label="Add New Todo">
           <Button
-            variant="outline"
             size="sm"
             onPress={handleButton}
             leftIcon={<Icon as={FontAwesome5} name="plus-circle" size="sm" />}

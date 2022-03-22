@@ -1,10 +1,3 @@
-const modes = {
-  DARK: "dark",
-  LIGHT: "light",
-};
-Object.freeze(modes);
-export { modes };
-
 const statusFilters = {
   ALL: "all",
   ACTIVE: "active",

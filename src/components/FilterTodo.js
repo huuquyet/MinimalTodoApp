@@ -7,6 +7,7 @@ import {
   HStack,
   Icon,
   Tooltip,
+  useColorModeValue,
   VStack,
 } from "native-base";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -31,7 +32,6 @@ const StatusFilter = ({ value: status, onChange }) => {
     return (
       <Button
         key={value}
-        variant="ghost"
         onPress={handleClick}
         color={selected}
         leftIcon={<Icon as={FontAwesome5} name="filter" size="xs" />}
@@ -93,12 +93,19 @@ const FilterTodo = () => {
   const onStatusChange = (status) => dispatch(statusFilterChanged(status));
 
   return (
-    <Box shadow={2} position="fixed" bottom={0} left={0} right={0} zIndex={1}>
-      <VStack space={2} maxW="500" w="100%" mx="auto" my={1}>
+    <Box
+      shadow={2}
+      position="fixed"
+      bottom={0}
+      maxW="500"
+      w="100%"
+      zIndex={1}
+      bg={useColorModeValue("warmGray.50", "coolGray.800")}
+    >
+      <VStack space={2}>
         <HStack justifyContent="space-between" m={1}>
           <Tooltip label="Mark All Completed">
             <Button
-              variant="ghost"
               onPress={onMarkCompletedClicked}
               leftIcon={
                 <Icon as={FontAwesome5} name="check-double" size="xs" />
@@ -109,7 +116,6 @@ const FilterTodo = () => {
           </Tooltip>
           <Tooltip label="Clear Completed">
             <Button
-              variant="ghost"
               onPress={onClearCompletedClicked}
               leftIcon={<Icon as={FontAwesome5} name="trash-alt" size="xs" />}
             >

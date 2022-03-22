@@ -1,11 +1,9 @@
 import React from "react";
 import { configureStore } from "@reduxjs/toolkit";
-import throttle from "lodash/throttle";
 
 import { loadFromLocalStorage, saveToLocalStorage } from "./localStorage";
 import todosReducer from "../features/todosSlice";
 import filtersReducer from "../features/filtersSlice";
-import modesReducer from "../features/modesSlice";
 
 const preloadedState = loadFromLocalStorage();
 
@@ -14,13 +12,14 @@ const store = configureStore({
     // Define a top-level state field named `todos`, handled by `todosReducer`
     todos: todosReducer,
     filters: filtersReducer,
-    modes: modesReducer,
   },
   preloadedState,
 });
 
+const _ = require("lodash");
+
 store.subscribe(
-  throttle(() => {
+  _.throttle(function () {
     saveToLocalStorage(store.getState());
   }, 1000)
 );

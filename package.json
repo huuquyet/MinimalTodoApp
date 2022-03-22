@@ -30,9 +30,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@expo/metro-config": "^0.3.12",
+    "@types/react": "^17.0.40",
+    "@types/react-native": "^0.67.3",
     "gh-pages": "^3.2.3",
     "jest-expo": "^44.0.1",
     "prettier": "^2.5.1",
+    "react-native-svg": "^12.3.0",
     "react-test-renderer": "^17.0.2"
   },
   "jest": {

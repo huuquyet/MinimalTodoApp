@@ -1,6 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Box, Center, ScrollView, Spinner, VStack } from "native-base";
+import {
+  Box,
+  Center,
+  ScrollView,
+  Spinner,
+  useColorModeValue,
+  VStack,
+} from "native-base";
 
 import SingleTodo from "./SingleTodo";
 import { selectFilteredTodoIds } from "../features/todosSlice";
@@ -18,9 +25,13 @@ const VisibleTodoList = () => {
   }
 
   return (
-    <Box shadow={2}>
+    <Box
+      shadow={2}
+      mb="130"
+      bg={useColorModeValue("warmGray.50", "coolGray.800")}
+    >
       {todoIds.length > 0 ? (
-        <ScrollView h="450">
+        <ScrollView>
           <VStack>
             {todoIds.map((todoId) => (
               <SingleTodo key={todoId} id={todoId} />
