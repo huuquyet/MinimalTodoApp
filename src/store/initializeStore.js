@@ -1,11 +1,11 @@
 import React from "react";
 import { configureStore } from "@reduxjs/toolkit";
 
-import { loadFromLocalStorage, saveToLocalStorage } from "./localStorage";
+import { getData, storeData } from "./appStorage";
 import todosReducer from "../features/todosSlice";
 import filtersReducer from "../features/filtersSlice";
 
-const preloadedState = loadFromLocalStorage();
+const preloadedState = getData();
 
 const store = configureStore({
   reducer: {
@@ -19,8 +19,8 @@ const store = configureStore({
 const _ = require("lodash");
 
 store.subscribe(
-  _.throttle(function () {
-    saveToLocalStorage(store.getState());
+  _.throttle(async function () {
+    await storeData(store.getState());
   }, 1000)
 );
 
