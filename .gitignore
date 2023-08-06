@@ -62,5 +62,4 @@ buck-out/
 .expo
 
 #other
-android/
-ios/
+.yarn/cache
