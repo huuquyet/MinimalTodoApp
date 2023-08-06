@@ -1,4 +1,3 @@
-import React from "react";
 import { configureStore } from "@reduxjs/toolkit";
 
 import { getData, storeData } from "./appStorage";
@@ -21,7 +20,7 @@ const _ = require("lodash");
 store.subscribe(
   _.throttle(async function () {
     await storeData(store.getState());
-  }, 1000)
+  }, 1000),
 );
 
 export default store;

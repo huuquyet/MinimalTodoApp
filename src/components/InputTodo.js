@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   Box,
@@ -15,17 +15,10 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 import { todoAdded } from "../features/todosSlice";
 
-const InputTodo = () => {
+export const InputTodo = () => {
   const [text, setText] = useState("");
   const [status, setStatus] = useState("idle");
   const dispatch = useDispatch();
-
-  const handleKeyDown = (e) => {
-    // If the user pressed the Enter key:
-    if (e.which === 13) {
-      handleButton();
-    }
-  };
 
   const handleButton = () => {
     const trimmedText = text.trim();
@@ -77,5 +70,3 @@ const InputTodo = () => {
     </Box>
   );
 };
-
-export default InputTodo;

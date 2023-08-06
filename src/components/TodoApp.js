@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import {
   Box,
@@ -15,17 +14,17 @@ import {
 } from "native-base";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import InputTodo from "./InputTodo";
-import VisibleTodoList from "./VisibleTodoList";
-import FilterTodo from "./FilterTodo";
+import { InputTodo } from "./InputTodo";
+import { VisibleTodoList } from "./VisibleTodoList";
+import { FilterTodo } from "./FilterTodo";
 import { selectTodos } from "../features/todosSlice";
 
-const TodoApp = () => {
+export const TodoApp = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const todosRemaining = useSelector((state) => {
     const uncompletedTodos = selectTodos(state).filter(
-      (todo) => !todo.completed
+      (todo) => !todo.completed,
     );
     return `${
       uncompletedTodos.length > 0 ? ` (${uncompletedTodos.length})` : ""
@@ -75,6 +74,4 @@ const TodoApp = () => {
       </VStack>
     </Center>
   );
-};
-
-export default TodoApp;
+}

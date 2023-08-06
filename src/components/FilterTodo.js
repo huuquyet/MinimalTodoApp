@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Box,
@@ -78,7 +77,7 @@ const ColorFilters = ({ value: colors, onChange }) => {
   );
 };
 
-const FilterTodo = () => {
+export const FilterTodo = () => {
   const dispatch = useDispatch();
 
   const { status, colors } = useSelector((state) => state.filters);
@@ -130,5 +129,3 @@ const FilterTodo = () => {
     </Box>
   );
 };
-
-export default FilterTodo;

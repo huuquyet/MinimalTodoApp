@@ -1,4 +1,3 @@
-import React from "react";
 import { createSlice } from "@reduxjs/toolkit";
 
 import { statusFilters } from "../common/constants";
@@ -28,7 +27,7 @@ const filtersSlice = createSlice({
           }
           case "removed": {
             state.colors = colors.filter(
-              (existingColor) => existingColor !== color
+              (existingColor) => existingColor !== color,
             );
             break;
           }

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   createSlice,
   createSelector,
@@ -78,7 +77,7 @@ export const selectTodoIds = createSelector(
   selectTodos,
   // Then, an "output selector" that receives all the input results as arguments
   // and returns a final result value
-  (todos) => todos.map((todo) => todo.id)
+  (todos) => todos.map((todo) => todo.id),
 );
 
 export const selectFilteredTodos = createSelector(
@@ -102,12 +101,12 @@ export const selectFilteredTodos = createSelector(
       const colorMatches = colors.length === 0 || colors.includes(todo.color);
       return statusMatches && colorMatches;
     });
-  }
+  },
 );
 
 export const selectFilteredTodoIds = createSelector(
   // Pass our other memoized selector as an input
   selectFilteredTodos,
   // And derive data in the output selector
-  (filteredTodos) => filteredTodos.map((todo) => todo.id)
+  (filteredTodos) => filteredTodos.map((todo) => todo.id),
 );

@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import {
   Box,
@@ -9,10 +8,10 @@ import {
   VStack,
 } from "native-base";
 
-import SingleTodo from "./SingleTodo";
+import { SingleTodo } from "./SingleTodo";
 import { selectFilteredTodoIds } from "../features/todosSlice";
 
-const VisibleTodoList = () => {
+export const VisibleTodoList = () => {
   const todoIds = useSelector(selectFilteredTodoIds);
   const loadingStatus = useSelector((state) => state.todos.status);
 
@@ -44,5 +43,3 @@ const VisibleTodoList = () => {
     </Box>
   );
 };
-
-export default VisibleTodoList;

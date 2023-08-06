@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Checkbox,
@@ -19,7 +18,7 @@ import {
 } from "../features/todosSlice";
 import { availableColors, capitalize } from "../common/constants";
 
-const SingleTodo = ({ id }) => {
+export const SingleTodo = ({ id }) => {
   // Call our `selectTodoById` with the state _and_ the ID value
   const todo = useSelector((state) => selectTodoById(state, id));
   const { text, completed, color } = todo;
@@ -75,5 +74,3 @@ const SingleTodo = ({ id }) => {
     </HStack>
   );
 };
-
-export default SingleTodo;
