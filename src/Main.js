@@ -1,7 +1,7 @@
 import { NativeBaseProvider } from "native-base";
-import { TodoApp } from "./components/TodoApp";
+import TodoApp from "./components/TodoApp";
 
-export function Main() {
+export default function Main() {
   return (
     <NativeBaseProvider>
       <TodoApp />

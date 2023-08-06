@@ -15,7 +15,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 import { todoAdded } from "../features/todosSlice";
 
-export const InputTodo = () => {
+export default function InputTodo() {
   const [text, setText] = useState("");
   const [status, setStatus] = useState("idle");
   const dispatch = useDispatch();

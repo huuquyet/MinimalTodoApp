@@ -18,7 +18,7 @@ import {
 } from "../features/todosSlice";
 import { availableColors, capitalize } from "../common/constants";
 
-export const SingleTodo = ({ id }) => {
+export default function SingleTodo({ id }) {
   // Call our `selectTodoById` with the state _and_ the ID value
   const todo = useSelector((state) => selectTodoById(state, id));
   const { text, completed, color } = todo;

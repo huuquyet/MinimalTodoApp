@@ -3,7 +3,8 @@ import {
   createSelector,
   createEntityAdapter,
 } from "@reduxjs/toolkit";
-import { nanoid } from "nanoid";
+import 'react-native-get-random-values';
+import { v4 as uuid } from 'uuid'
 
 import { statusFilters } from "../common/constants";
 
@@ -21,7 +22,7 @@ const todosSlice = createSlice({
   reducers: {
     todoAdded(state, action) {
       todosAdapter.addOne(state, {
-        id: nanoid(),
+        id: uuid(),
         text: action.payload,
         completed: false,
         color: "",

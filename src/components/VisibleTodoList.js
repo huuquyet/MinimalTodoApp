@@ -8,10 +8,10 @@ import {
   VStack,
 } from "native-base";
 
-import { SingleTodo } from "./SingleTodo";
+import SingleTodo from "./SingleTodo";
 import { selectFilteredTodoIds } from "../features/todosSlice";
 
-export const VisibleTodoList = () => {
+export default function VisibleTodoList() {
   const todoIds = useSelector(selectFilteredTodoIds);
   const loadingStatus = useSelector((state) => state.todos.status);
 

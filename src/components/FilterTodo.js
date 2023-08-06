@@ -77,7 +77,7 @@ const ColorFilters = ({ value: colors, onChange }) => {
   );
 };
 
-export const FilterTodo = () => {
+export default function FilterTodo() {
   const dispatch = useDispatch();
 
   const { status, colors } = useSelector((state) => state.filters);

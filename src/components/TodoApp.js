@@ -14,12 +14,12 @@ import {
 } from "native-base";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import { InputTodo } from "./InputTodo";
-import { VisibleTodoList } from "./VisibleTodoList";
-import { FilterTodo } from "./FilterTodo";
+import InputTodo from "./InputTodo";
+import VisibleTodoList from "./VisibleTodoList";
+import FilterTodo from "./FilterTodo";
 import { selectTodos } from "../features/todosSlice";
 
-export const TodoApp = () => {
+export default function TodoApp() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const todosRemaining = useSelector((state) => {

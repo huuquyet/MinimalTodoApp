@@ -1,9 +1,9 @@
 import { Provider } from "react-redux";
 
 import store from "./src/store/initializeStore";
-import { Main } from "./src/Main";
+import Main from "./src/Main";
 
-export function App() {
+export default function App() {
   return (
     <Provider store={store}>
       <Main />
