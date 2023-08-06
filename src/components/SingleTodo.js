@@ -73,4 +73,4 @@ export default function SingleTodo({ id }) {
       </Tooltip>
     </HStack>
   );
-};
+}

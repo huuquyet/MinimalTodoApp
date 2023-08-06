@@ -128,4 +128,4 @@ export default function FilterTodo() {
       </VStack>
     </Box>
   );
-};
+}
