@@ -1,10 +1,10 @@
-import InputTodo from './InputTodo'
-import VisibleTodoList from './VisibleTodoList'
-import FilterTodo from './FilterTodo'
+import { InputTodo } from './InputTodo'
+import { VisibleTodoList } from './VisibleTodoList'
+import { FilterTodo } from './FilterTodo'
 import { useTodo } from 'app/zustand'
 import { YStack } from '@my/ui'
 
-export function TodoApp() {
+export const TodoApp = () => {
   return (
     <YStack f={1} h="100%" p="$4" space>
       {/* <AppBar /> */}

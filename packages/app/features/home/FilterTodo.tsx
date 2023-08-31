@@ -1,15 +1,19 @@
-import { availableColors, capitalize, statusFilters } from 'app/common/constants'
+import { availableColors, statusFilters } from 'app/common/constants'
 import { useTodo } from 'app/zustand'
-import { Button, ToggleGroup, Tooltip, XGroup, XStack, YStack } from '@my/ui'
+import { Button, Circle, Paragraph, ToggleGroup, Tooltip, XGroup, XStack, YStack } from '@my/ui'
 import { CheckCheck, Filter, Trash } from '@tamagui/lucide-icons'
 
 const StatusFilter = ({ value: status, onChange }) => {
   return (
     <XStack jc="center" ai="center" space>
-      <XGroup orientation="horizontal" size="$4">
+      <XGroup size="$4">
         {Object.keys(statusFilters).map((item) => (
           <XGroup.Item key={item}>
-            <Button onPress={() => onChange(item)} icon={Filter} size="$4">
+            <Button
+              onPress={() => onChange(item)}
+              size="$4"
+              icon={item === status ? <Filter /> : undefined}
+            >
               {item}
             </Button>
           </XGroup.Item>
@@ -24,17 +28,19 @@ const ColorFilters = ({ value: colors, onChange }) => (
     <ToggleGroup
       type="multiple"
       orientation="horizontal"
-      size="$6"
+      size="$4"
       onValueChange={(colors) => onChange(colors)}
     >
       {availableColors.map((color) => (
-        <ToggleGroup.Item key={color} value={color} aria-label={color} backgroundColor={color} />
+        <ToggleGroup.Item key={color} value={color} aria-label={color}>
+          <Circle backgroundColor={color} />
+        </ToggleGroup.Item>
       ))}
     </ToggleGroup>
   </XStack>
 )
 
-export default function FilterTodo() {
+export const FilterTodo = () => {
   const {
     status,
     colors,
@@ -45,17 +51,17 @@ export default function FilterTodo() {
   } = useTodo()
 
   return (
-    <YStack zIndex={1} p="$4" w="97%" pos="absolute" b={0} space>
+    <YStack zIndex={1} p="$4" w="96%" pos="absolute" b={0} space>
       <XStack p="$4" jc="space-between" space>
         <Tooltip>
           <Tooltip.Trigger>
             <Button onPress={markAllCompleted} icon={CheckCheck}>
-              Mark All Completed
+              MARK ALL COMPLETED
             </Button>
           </Tooltip.Trigger>
           <Tooltip.Content>
             <Tooltip.Arrow />
-            Mark All Completed
+            <Paragraph>Mark All Todos Completed</Paragraph>
           </Tooltip.Content>
         </Tooltip>
         <Tooltip>
@@ -66,7 +72,7 @@ export default function FilterTodo() {
           </Tooltip.Trigger>
           <Tooltip.Content>
             <Tooltip.Arrow />
-            Clear All Completed
+            <Paragraph>Clear All Completed Todos</Paragraph>
           </Tooltip.Content>
         </Tooltip>
       </XStack>

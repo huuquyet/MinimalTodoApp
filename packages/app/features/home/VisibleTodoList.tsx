@@ -1,15 +1,15 @@
-import SingleTodo from './SingleTodo'
+import { SingleTodo } from './SingleTodo'
 import { useTodo } from 'app/zustand'
-import { ScrollView, Spinner, Text, YStack } from '@my/ui'
+import { Paragraph, ScrollView, Spinner, YGroup, YStack } from '@my/ui'
 
-export default function VisibleTodoList() {
+export const VisibleTodoList = () => {
   const { todos, loading, selectTodoIds } = useTodo()
   const todoIds = selectTodoIds
 
   if (loading === 'loading') {
     return (
-      <YStack jc="center">
-        <Spinner />
+      <YStack ai="center">
+        <Spinner size="large" />
       </YStack>
     )
   }
@@ -18,15 +18,17 @@ export default function VisibleTodoList() {
     <YStack p="$4" space>
       {todoIds.length > 0 ? (
         <ScrollView>
-          <YStack>
+          <YGroup alignSelf="center" size="$4" w='100%'>
             {todoIds.map((todoId) => (
-              <SingleTodo key={todoId} id={todoId} />
+              <YGroup.Item key={todoId}>
+                <SingleTodo id={todoId} />
+              </YGroup.Item>
             ))}
-          </YStack>
+          </YGroup>
         </ScrollView>
       ) : (
         <YStack p="$4" ai="center">
-          <Text>Nothing here 🙈🐘</Text>
+          <Paragraph>Nothing here 🙈🐘</Paragraph>
         </YStack>
       )}
     </YStack>

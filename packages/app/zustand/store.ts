@@ -76,16 +76,20 @@ export const initializeStore = (preloadedState: Partial<StoreInterface> = {}) =>
               set({ loading })
             },
             todoAdded: (text: string) => {
-              get().todos.push({
-                id: uuid(),
-                text: text,
-                completed: false,
-                color: '',
+              set((state) => {
+                state.todos.push({
+                  id: uuid(),
+                  text: text,
+                  completed: false,
+                  color: '',
+                })
               })
             },
             todoToggled: (id: string) => {
-              const todo = get().todos.find((todo) => todo.id === id)!
-              todo.completed = !todo.completed
+              set((state) => {
+                const todo = state.todos.find((todo) => todo.id === id)!
+                todo.completed = !todo.completed
+              })
             },
             todoDeleted: (id: string) => {
               set({
@@ -93,12 +97,16 @@ export const initializeStore = (preloadedState: Partial<StoreInterface> = {}) =>
               })
             },
             todoColorSelected: (id: string, color: string) => {
-              const todo = get().todos.find((todo) => todo.id === id)!
-              todo.color = color
+              set((state) => {
+                const todo = state.todos.find((todo) => todo.id === id)!
+                todo.color = color
+              })
             },
             markAllCompleted: () => {
-              get().todos.forEach((todo) => {
-                todo.completed = true
+              set((state) => {
+                state.todos.forEach((todo) => {
+                  todo.completed = true
+                })
               })
             },
             clearAllCompleted: () => {

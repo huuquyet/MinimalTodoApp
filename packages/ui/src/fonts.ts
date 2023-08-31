@@ -44,7 +44,7 @@ export function createGenericFont<A extends GenericFont<keyof typeof genericFont
 
 const systemFamily =
   process.env.TAMAGUI_TARGET === 'native'
-    ? 'InterMedium'
+    ? 'Inter-Medium'
     : '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
 
 const headingFont = createInterFont(
@@ -80,9 +80,9 @@ const headingFont = createInterFont(
     },
     // for native
     face: {
-      700: { normal: 'InterBold' },
-      800: { normal: 'InterBold' },
-      900: { normal: 'InterBold' },
+      700: { normal: 'Inter-Bold' },
+      800: { normal: 'Inter-Bold' },
+      900: { normal: 'Inter-Bold' },
     },
   },
   { sizeLineHeight: (size) => Math.round(size * 1.1 + (size < 30 ? 10 : 5)) }
@@ -97,7 +97,7 @@ const bodyFont = createInterFont(
     },
     // for native
     face: {
-      900: { normal: 'InterBold' },
+      900: { normal: 'Inter-Bold' },
     },
   },
   {
