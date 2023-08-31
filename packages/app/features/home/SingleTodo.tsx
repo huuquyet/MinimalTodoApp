@@ -9,19 +9,19 @@ export default function SingleTodo({ id }: { id: string }) {
   const todo = selectTodoById(id)!
 
   return (
-    <XStack p="$4" space>
+    <XStack ai="center" space>
       <Checkbox
         checked={todo.completed}
         onCheckedChange={() => todoToggled(id)}
-        accessibilityLabel="Completed"
         value={todo.text}
+        aria-label='Completed'
       />
       <Button flexGrow={1} onPress={() => todoToggled(id)}>
         <Text style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
           {todo.text}
         </Text>
       </Button>
-      <Select onValueChange={(color) => todoColorSelected(todo.id, color)} value={todo.color}>
+      <Select onValueChange={(color) => todoColorSelected(id, color)} value={todo.color}>
         <Select.Trigger width={220} iconAfter={ChevronDown}>
           <Select.Value placeholder="Color" />
         </Select.Trigger>

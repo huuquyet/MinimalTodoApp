@@ -6,7 +6,7 @@ import { YStack } from '@my/ui'
 
 export function TodoApp() {
   return (
-    <YStack f={1} jc="center" ai="center" p="$4" space>
+    <YStack f={1} h="100%" p="$4" space>
       {/* <AppBar /> */}
       <InputTodo />
       <VisibleTodoList />

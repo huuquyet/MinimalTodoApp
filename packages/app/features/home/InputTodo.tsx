@@ -1,5 +1,5 @@
 import { useTodo } from 'app/zustand'
-import { Button, Input, Spinner, Stack, Tooltip, XStack, YStack } from '@my/ui'
+import { Button, Input, Spinner, Tooltip, XStack, YStack } from '@my/ui'
 import { PlusCircle } from '@tamagui/lucide-icons'
 
 export default function InputTodo() {
@@ -21,18 +21,16 @@ export default function InputTodo() {
   let placeholder = isLoading ? '' : 'What needs to be done?'
 
   return (
-    <YStack p="$4" space>
+    <YStack space>
       <XStack jc="space-between" space>
         <Input
-          disabled={isLoading}
           value={text}
+          onChangeText={(text) => setText(text)}
           placeholder={placeholder}
           size="$4"
-          autoFocus
-          p="$4"
-          h="$6"
           w="90%"
-          onChangeText={(text) => setText(text)}
+          autoFocus
+          disabled={isLoading}
         />
         <Tooltip>
           <Tooltip.Trigger>
@@ -48,9 +46,9 @@ export default function InputTodo() {
       </XStack>
 
       {isLoading ? (
-        <Stack f={1} jc="center">
+        <XStack jc="center">
           <Spinner size="large" />
-        </Stack>
+        </XStack>
       ) : null}
     </YStack>
   )

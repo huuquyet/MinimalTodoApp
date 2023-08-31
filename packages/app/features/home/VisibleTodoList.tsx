@@ -1,6 +1,6 @@
 import SingleTodo from './SingleTodo'
 import { useTodo } from 'app/zustand'
-import { ScrollView, Spinner, Stack, Text, YStack } from '@my/ui'
+import { ScrollView, Spinner, Text, YStack } from '@my/ui'
 
 export default function VisibleTodoList() {
   const { todos, loading, selectTodoIds } = useTodo()
@@ -8,14 +8,14 @@ export default function VisibleTodoList() {
 
   if (loading === 'loading') {
     return (
-      <Stack jc="center">
+      <YStack jc="center">
         <Spinner />
-      </Stack>
+      </YStack>
     )
   }
 
   return (
-    <YStack ai="center" jc="center" p="$4" space>
+    <YStack p="$4" space>
       {todoIds.length > 0 ? (
         <ScrollView>
           <YStack>
@@ -25,9 +25,9 @@ export default function VisibleTodoList() {
           </YStack>
         </ScrollView>
       ) : (
-        <Stack p="$4" jc="center">
+        <YStack p="$4" ai="center">
           <Text>Nothing here 🙈🐘</Text>
-        </Stack>
+        </YStack>
       )}
     </YStack>
   )

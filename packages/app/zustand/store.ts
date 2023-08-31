@@ -31,7 +31,7 @@ interface StoreInterface {
   markAllCompleted: () => void
   clearAllCompleted: () => void
   statusFilterChanged: (status: string) => void
-  colorFilterChanged: (color: string, changeType: string) => void
+  colorFilterChanged: (colors: string[]) => void
 }
 
 const getDefaultInitialState = () => ({
@@ -109,24 +109,8 @@ export const initializeStore = (preloadedState: Partial<StoreInterface> = {}) =>
             statusFilterChanged: (status: string) => {
               set({ status })
             },
-            colorFilterChanged: (color: string, changeType: string) => {
-              const colors = get().colors
-              switch (changeType) {
-                case 'added': {
-                  if (!colors.includes(color)) {
-                    colors.push(color)
-                  }
-                  break
-                }
-                case 'removed': {
-                  set({
-                    colors: colors.filter((item) => item !== color),
-                  })
-                  break
-                }
-                default:
-                  return
-              }
+            colorFilterChanged: (colors: string[]) => {
+              set({ colors })
             },
           }),
           { name: '@minimal_todo', storage: createJSONStorage(() => getStorageType()) }
@@ -156,6 +140,6 @@ export const useTodo = () => {
     colorFilterChanged: store.colorFilterChanged,
     selectTodoById: (id: string) => store.todos.find((todo) => todo.id === id),
     selectTodoIds: store.todos.map((todo) => todo.id),
-    incompletedTodos: store.todos.map((todo) => !todo.completed),
+    incompletedTodos: store.todos.filter((todo) => !todo.completed),
   }))
 }
