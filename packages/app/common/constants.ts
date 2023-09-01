@@ -14,6 +14,6 @@ const statusLoading = {
 Object.freeze(statusLoading)
 export { statusLoading }
 
-export const availableColors = ['red', 'orange', 'green', 'navy', 'purple']
+export const availableColors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'violet']
 
 export const capitalize = (s) => s[0].toUpperCase() + s.slice(1)

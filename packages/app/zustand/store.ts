@@ -16,12 +16,15 @@ interface Todo {
   color: string
 }
 
-interface StoreInterface {
+interface StoreProps {
   todos: Todo[]
   text: string
   status: (typeof statusFilters)['ALL' | 'ACTIVE' | 'COMPLETED']
   colors: Array<(typeof availableColors)[number]>
   loading: (typeof statusLoading)['IDLE' | 'LOADING' | 'FAILED']
+}
+
+interface StoreInterface extends StoreProps {
   setText: (text: string) => void
   setLoading: (loading: string) => void
   todoAdded: (text: string) => void
@@ -34,13 +37,13 @@ interface StoreInterface {
   colorFilterChanged: (colors: string[]) => void
 }
 
-const getDefaultInitialState = () => ({
+const getDefaultInitialState: StoreProps = {
   todos: [],
   text: '',
   status: statusFilters.ALL,
   colors: [],
   loading: statusLoading.IDLE,
-})
+}
 
 export type StoreType = ReturnType<typeof initializeStore>
 
@@ -61,13 +64,13 @@ export const getStorageType = () => {
   return isBrowser ? window.localStorage : AsyncStorage
 }
 
-export const initializeStore = (preloadedState: Partial<StoreInterface> = {}) => {
+export const initializeStore = (preloadedState: Partial<StoreProps> = {}) => {
   return createStore<StoreInterface>()(
     immer(
       devtools(
         persist(
-          (set, get) => ({
-            ...getDefaultInitialState(),
+          (set) => ({
+            ...getDefaultInitialState,
             ...preloadedState,
             setText: (text: string) => {
               set({ text })
@@ -92,9 +95,9 @@ export const initializeStore = (preloadedState: Partial<StoreInterface> = {}) =>
               })
             },
             todoDeleted: (id: string) => {
-              set({
-                todos: get().todos.filter((todo) => todo.id !== id),
-              })
+              set((state) => ({
+                todos: state.todos.filter((todo) => todo.id !== id),
+              }))
             },
             todoColorSelected: (id: string, color: string) => {
               set((state) => {
@@ -110,9 +113,9 @@ export const initializeStore = (preloadedState: Partial<StoreInterface> = {}) =>
               })
             },
             clearAllCompleted: () => {
-              set({
-                todos: get().todos.filter((todo) => !todo.completed),
-              })
+              set((state) => ({
+                todos: state.todos.filter((todo) => !todo.completed),
+              }))
             },
             statusFilterChanged: (status: string) => {
               set({ status })
@@ -147,7 +150,23 @@ export const useTodo = () => {
     statusFilterChanged: store.statusFilterChanged,
     colorFilterChanged: store.colorFilterChanged,
     selectTodoById: (id: string) => store.todos.find((todo) => todo.id === id),
-    selectTodoIds: store.todos.map((todo) => todo.id),
-    incompletedTodos: store.todos.filter((todo) => !todo.completed),
+    incompletedCount: store.todos.filter((todo) => !todo.completed).length,
+    selectFilteredIds: () => {
+      const statusShowAll = store.status === statusFilters.ALL
+      const statusCompleted = store.status === statusFilters.COMPLETED
+      // return all todos with no filters
+      if (statusShowAll && store.colors.length === 0) {
+        return store.todos.map((todo) => todo.id)
+      }
+
+      // return either active or completed todos based on filters
+      return store.todos
+        .filter((todo) => {
+          const statusMatches = statusShowAll || todo.completed === statusCompleted
+          const colorMatches = store.colors.length === 0 || store.colors.includes(todo.color)
+          return statusMatches && colorMatches
+        })
+        .map((todo) => todo.id)
+    },
   }))
 }

@@ -3,33 +3,36 @@ import { useTodo } from 'app/zustand'
 import { Button, Circle, Paragraph, ToggleGroup, Tooltip, XGroup, XStack, YStack } from '@my/ui'
 import { CheckCheck, Filter, Trash } from '@tamagui/lucide-icons'
 
-const StatusFilter = ({ value: status, onChange }) => {
+const StatusFilter = ({ value: status, onChange: statusFilterChanged }) => {
   return (
     <XStack jc="center" ai="center" space>
       <XGroup size="$4">
-        {Object.keys(statusFilters).map((item) => (
-          <XGroup.Item key={item}>
-            <Button
-              onPress={() => onChange(item)}
-              size="$4"
-              icon={item === status ? <Filter /> : undefined}
-            >
-              {item}
-            </Button>
-          </XGroup.Item>
-        ))}
+        {Object.keys(statusFilters).map((key) => {
+          const item = statusFilters[key]
+          return (
+            <XGroup.Item key={key}>
+              <Button
+                onPress={() => statusFilterChanged(item)}
+                size="$4"
+                icon={item === status ? <Filter /> : undefined}
+              >
+                {key}
+              </Button>
+            </XGroup.Item>
+          )
+        })}
       </XGroup>
     </XStack>
   )
 }
 
-const ColorFilters = ({ value: colors, onChange }) => (
+const ColorFilters = ({ value: colors, onChange: colorFilterChanged }) => (
   <XStack jc="center" ai="center" space>
     <ToggleGroup
       type="multiple"
       orientation="horizontal"
       size="$4"
-      onValueChange={(colors) => onChange(colors)}
+      onValueChange={(colors) => colorFilterChanged(colors)}
     >
       {availableColors.map((color) => (
         <ToggleGroup.Item key={color} value={color} aria-label={color}>

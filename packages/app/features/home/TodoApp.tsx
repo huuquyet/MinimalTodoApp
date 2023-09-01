@@ -16,10 +16,10 @@ export const TodoApp = () => {
 }
 
 const AppBar = () => {
-  const { incompletedTodos } = useTodo()
+  const { incompletedCount } = useTodo()
   // const { colorMode, toggleColorMode } = useColorMode()
 
-  const todosRemaining = `${incompletedTodos.length > 0 ? ` (${incompletedTodos.length})` : ''}`
+  const todosRemaining = `${incompletedCount > 0 ? ` (${incompletedCount})` : ''}`
 
   return (
     <>

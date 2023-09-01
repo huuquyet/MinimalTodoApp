@@ -21,13 +21,13 @@ export const SingleTodo = ({ id }: { id: string }) => {
         </Checkbox.Indicator>
       </Checkbox>
       <Button flexGrow={1} onPress={() => todoToggled(id)} jc="flex-start" chromeless>
-        <Paragraph textDecorationLine={todo.completed ? 'line-through' : 'none'}>
+        <Paragraph textDecorationLine={todo.completed ? 'line-through' : 'none'} color={todo.color}>
           {todo.text}
         </Paragraph>
       </Button>
       <Select onValueChange={(color) => todoColorSelected(id, color)} value={todo.color}>
         <Select.Trigger width={220} iconAfter={ChevronDown}>
-          <Select.Value placeholder="Color" />
+          <Select.Value placeholder="Color" color={todo.color} />
         </Select.Trigger>
         <Select.Content zIndex={200000}>
           <Select.ScrollUpButton />

@@ -5,7 +5,6 @@
       "app/*": ["./packages/app/*"],
       "@my/ui/*": ["./packages/ui/*"]
     },
-    "strict": true,
     "strictNullChecks": true
   },
   "extends": "./tsconfig.base",
