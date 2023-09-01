@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "Minimal Todo App",
+    "slug": "minimaltodoapp",
+    "scheme": "minimaltodoapp",
+    "version": "0.2.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.minimaltodoapp"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.minimaltodoapp"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": ""
+      }
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://minimaltodoapp.vercel.app/"
+        }
+      ]
+    ]
+  }
+}
