@@ -54,7 +54,7 @@ export const FilterTodo = () => {
   } = useTodo()
 
   return (
-    <YStack zIndex={1} p="$4" w="96%" pos="absolute" b={0} space>
+    <YStack zIndex={1} p="$4" w="96%" pos="absolute" b={0} bc='$background' space>
       <XStack p="$4" jc="space-between" space>
         <Tooltip>
           <Tooltip.Trigger>

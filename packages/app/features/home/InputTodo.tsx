@@ -5,6 +5,12 @@ import { PlusCircle } from '@tamagui/lucide-icons'
 export const InputTodo = () => {
   const { text, setText, loading, setLoading, todoAdded } = useTodo()
 
+  const handleInput = (key) => {
+    if (key === 'Enter') {
+      handleButton()
+    }
+  }
+
   const handleButton = () => {
     const trimmedText = text.trim()
     if (trimmedText) {
@@ -24,6 +30,7 @@ export const InputTodo = () => {
       <Input
         value={text}
         onChangeText={(text) => setText(text)}
+        onKeyPress={(e) => handleInput(e.nativeEvent.key)}
         placeholder={placeholder}
         size="$4"
         w="90%"

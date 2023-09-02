@@ -36,6 +36,6 @@
     "@tamagui/font-inter": "latest",
     "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.4",
-    "metro-minify-terser": "^0.78.1"
+    "metro-minify-terser": "^0.79.0"
   }
 }
