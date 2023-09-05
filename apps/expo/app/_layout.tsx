@@ -6,8 +6,8 @@ import { Stack } from 'expo-router'
 import { Provider } from 'app/provider'
 import { tamaguiFonts } from './tamaguiFonts.native'
 
-export default async function HomeLayout() {
-  const [loaded] = await useFonts(tamaguiFonts)
+export default function HomeLayout() {
+  const [loaded] = useFonts(tamaguiFonts)
   const scheme = useColorScheme()
 
   if (!loaded) {

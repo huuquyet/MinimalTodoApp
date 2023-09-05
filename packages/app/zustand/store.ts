@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { v4 as uuid } from 'uuid'
+import * as Crypto from 'expo-crypto'
 import { createStore } from 'zustand'
 import { useStoreWithEqualityFn } from 'zustand/traditional'
 import { devtools, persist, createJSONStorage } from 'zustand/middleware'
@@ -81,7 +81,7 @@ export const initializeStore = (preloadedState: Partial<StoreProps> = {}) => {
               todos: [
                 ...get().todos,
                 {
-                  id: uuid(),
+                  id: Crypto.randomUUID(),
                   text,
                   completed: false,
                   color: '',
