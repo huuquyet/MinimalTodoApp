@@ -4,7 +4,6 @@ import { v4 as uuid } from 'uuid'
 import { createStore } from 'zustand'
 import { useStoreWithEqualityFn } from 'zustand/traditional'
 import { devtools, persist, createJSONStorage } from 'zustand/middleware'
-import { immer } from 'zustand/middleware/immer'
 import { shallow } from 'zustand/shallow'
 
 import { availableColors, statusFilters, statusLoading } from 'app/common/constants'
@@ -66,68 +65,84 @@ export const getStorageType = () => {
 
 export const initializeStore = (preloadedState: Partial<StoreProps> = {}) => {
   return createStore<StoreInterface>()(
-    immer(
-      devtools(
-        persist(
-          (set) => ({
-            ...getDefaultInitialState,
-            ...preloadedState,
-            setText: (text: string) => {
-              set({ text })
-            },
-            setLoading: (loading: string) => {
-              set({ loading })
-            },
-            todoAdded: (text: string) => {
-              set((state) => {
-                state.todos.push({
+    devtools(
+      persist(
+        (set, get) => ({
+          ...getDefaultInitialState,
+          ...preloadedState,
+          setText: (text: string) => {
+            set({ text })
+          },
+          setLoading: (loading: string) => {
+            set({ loading })
+          },
+          todoAdded: (text: string) => {
+            set({
+              todos: [
+                ...get().todos,
+                {
                   id: uuid(),
-                  text: text,
+                  text,
                   completed: false,
                   color: '',
-                })
-              })
-            },
-            todoToggled: (id: string) => {
-              set((state) => {
-                const todo = state.todos.find((todo) => todo.id === id)!
-                todo.completed = !todo.completed
-              })
-            },
-            todoDeleted: (id: string) => {
-              set((state) => ({
-                todos: state.todos.filter((todo) => todo.id !== id),
-              }))
-            },
-            todoColorSelected: (id: string, color: string) => {
-              set((state) => {
-                const todo = state.todos.find((todo) => todo.id === id)!
-                todo.color = color
-              })
-            },
-            markAllCompleted: () => {
-              set((state) => {
-                state.todos.forEach((todo) => {
-                  todo.completed = true
-                })
-              })
-            },
-            clearAllCompleted: () => {
-              set((state) => ({
-                todos: state.todos.filter((todo) => !todo.completed),
-              }))
-            },
-            statusFilterChanged: (status: string) => {
-              set({ status })
-            },
-            colorFilterChanged: (colors: string[]) => {
-              set({ colors })
-            },
-          }),
-          { name: '@minimal_todo', storage: createJSONStorage(() => getStorageType()) }
-        ),
-        { enabled: false }
-      )
+                },
+              ],
+            })
+          },
+          todoToggled: (id: string) => {
+            set({
+              todos: get().todos.map((todo) => {
+                if (todo.id !== id) {
+                  return todo
+                }
+                return {
+                  ...todo,
+                  completed: !todo.completed,
+                }
+              }),
+            })
+          },
+          todoDeleted: (id: string) => {
+            set({
+              todos: get().todos.filter((todo) => todo.id !== id),
+            })
+          },
+          todoColorSelected: (id: string, color: string) => {
+            set({
+              todos: get().todos.map((todo) => {
+                if (todo.id !== id) {
+                  return todo
+                }
+                return {
+                  ...todo,
+                  color,
+                }
+              }),
+            })
+          },
+          markAllCompleted: () => {
+            set({
+              todos: get().todos.map((todo) => ({
+                ...todo,
+                completed: true,
+              })),
+            })
+          },
+          clearAllCompleted: () => {
+            set({
+              todos: get().todos.filter((todo) => !todo.completed),
+            })
+          },
+          statusFilterChanged: (status: string) => {
+            set({ status })
+          },
+          colorFilterChanged: (colors: string[]) => {
+            set({ colors })
+          },
+        }),
+        { name: '@minimal_todo', storage: createJSONStorage(() => getStorageType()) }
+      ),
+      { enabled: false }
     )
   )
 }

@@ -15,6 +15,7 @@ const StatusFilter = ({ value: status, onChange: statusFilterChanged }) => {
                 onPress={() => statusFilterChanged(item)}
                 size="$4"
                 icon={item === status ? <Filter /> : undefined}
+                fontWeight={item === status ? 'bold' : undefined}
               >
                 {key}
               </Button>
@@ -54,8 +55,8 @@ export const FilterTodo = () => {
   } = useTodo()
 
   return (
-    <YStack zIndex={1} p="$4" w="96%" pos="absolute" b={0} bc='$background' space>
-      <XStack p="$4" jc="space-between" space>
+    <YStack zIndex={1} p="$4" w="96%" pos="absolute" b={0} bc="$background" space>
+      <XStack jc="space-between" space>
         <Tooltip>
           <Tooltip.Trigger>
             <Button onPress={markAllCompleted} icon={CheckCheck}>

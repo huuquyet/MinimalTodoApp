@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "index.ts",
   "private": true,
   "sideEffects": [
@@ -10,7 +10,6 @@
     "@my/ui": "*",
     "@react-native-async-storage/async-storage": "~1.18.2",
     "@tamagui/lucide-icons": "latest",
-    "immer": "^10.0.2",
     "react": "^18.2.0",
     "react-native": "^0.72.4",
     "solito": "^4.0.1",

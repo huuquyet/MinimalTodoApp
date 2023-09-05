@@ -1,6 +1,6 @@
 {
   "name": "expo-app",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "index.ts",
   "private": true,
   "scripts": {
@@ -30,7 +30,7 @@
     "react-native-web": "^0.19.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.11",
+    "@babel/core": "^7.22.15",
     "@react-native-async-storage/async-storage": "~1.18.2",
     "@tamagui/babel-plugin": "latest",
     "@tamagui/font-inter": "latest",

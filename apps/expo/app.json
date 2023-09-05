@@ -1,9 +1,10 @@
 {
   "expo": {
     "name": "Minimal Todo App",
-    "slug": "minimaltodoapp",
-    "scheme": "minimaltodoapp",
-    "version": "0.2.0",
+    "slug": "minimaltodo",
+    "scheme": "minimaltodo",
+    "version": "0.2.1",
+    "owner": "quyet",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -18,14 +19,14 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.minimaltodoapp"
+      "bundleIdentifier": "com.minimaltodo"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.minimaltodoapp"
+      "package": "com.minimaltodo"
     },
     "web": {
       "favicon": "./assets/favicon.png"

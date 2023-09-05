@@ -4,8 +4,7 @@
     "paths": {
       "app/*": ["./packages/app/*"],
       "@my/ui/*": ["./packages/ui/*"]
-    },
-    "strictNullChecks": true
+    }
   },
   "extends": "./tsconfig.base",
   "exclude": [
