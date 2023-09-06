@@ -33,7 +33,7 @@ export const InputTodo = () => {
         onKeyPress={(e) => handleInput(e.nativeEvent.key)}
         placeholder={placeholder}
         size="$4"
-        w="90%"
+        fg={1}
         autoFocus
         disabled={loading !== 'idle'}
       />

@@ -37,7 +37,7 @@ const ColorFilters = ({ value: colors, onChange: colorFilterChanged }) => (
     >
       {availableColors.map((color) => (
         <ToggleGroup.Item key={color} value={color} aria-label={color}>
-          <Circle backgroundColor={color} />
+          <Circle bc={color} />
         </ToggleGroup.Item>
       ))}
     </ToggleGroup>

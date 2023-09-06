@@ -1,6 +1,6 @@
 import { availableColors, capitalize } from 'app/common/constants'
 import { useTodo } from 'app/zustand'
-import { Button, Checkbox, Paragraph, Select, Tooltip, XStack } from '@my/ui'
+import { Button, Checkbox, Paragraph, Select, Square, Tooltip, XStack } from '@my/ui'
 import { Check, ChevronDown, Trash } from '@tamagui/lucide-icons'
 
 export const SingleTodo = ({ id }: { id: string }) => {
@@ -20,14 +20,19 @@ export const SingleTodo = ({ id }: { id: string }) => {
           <Check />
         </Checkbox.Indicator>
       </Checkbox>
-      <Button flexGrow={1} onPress={() => todoToggled(id)} jc="flex-start" chromeless>
-        <Paragraph textDecorationLine={todo.completed ? 'line-through' : 'none'} color={todo.color}>
+      <Button fg={1} onPress={() => todoToggled(id)} jc="flex-start" chromeless>
+        <Paragraph textDecorationLine={todo.completed ? 'line-through' : 'none'}>
           {todo.text}
         </Paragraph>
       </Button>
-      <Select onValueChange={(color) => todoColorSelected(id, color)} value={todo.color}>
-        <Select.Trigger width={220} iconAfter={ChevronDown}>
-          <Select.Value placeholder="Color" color={todo.color} />
+      <Select
+        onValueChange={(color) => todoColorSelected(id, color)}
+        value={todo.color || '$color'}
+      >
+        <Select.Trigger w="$8" iconAfter={ChevronDown}>
+          <Select.Value placeholder="Color">
+            <Square size="$2" bc={todo.color || '$color'} />
+          </Select.Value>
         </Select.Trigger>
         <Select.Content zIndex={200000}>
           <Select.ScrollUpButton />
@@ -36,7 +41,9 @@ export const SingleTodo = ({ id }: { id: string }) => {
               <Select.Label>Color</Select.Label>
               {availableColors.map((color, i) => (
                 <Select.Item index={i} key={color} value={color}>
-                  <Select.ItemText color={color}>{capitalize(color)}</Select.ItemText>
+                  <Select.ItemText>
+                    <Square size="$2" bc={color} />
+                  </Select.ItemText>
                 </Select.Item>
               ))}
             </Select.Group>

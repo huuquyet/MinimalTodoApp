@@ -46,6 +46,7 @@ let nextConfig = {
   },
   transpilePackages: [
     'expo-constants',
+    'expo-crypto',
     'expo-linking',
     'expo-modules-core',
     'react-native-web',

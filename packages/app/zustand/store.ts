@@ -58,7 +58,7 @@ export const useStore = <T>(selector: (state: StoreInterface) => T) => {
   return useStoreWithEqualityFn(store, selector, shallow)
 }
 
-export const getStorageType = () => {
+const getStorageType = () => {
   const isBrowser = typeof window === 'undefined' //browser or react-native
   return isBrowser ? window.localStorage : AsyncStorage
 }
@@ -91,7 +91,7 @@ export const initializeStore = (preloadedState: Partial<StoreProps> = {}) => {
           },
           todoToggled: (id: string) => {
             set({
-              todos: get().todos.map((todo) => {
+              todos: get().todos.map<Todo>((todo: Todo) => {
                 if (todo.id !== id) {
                   return todo
                 }
@@ -104,12 +104,12 @@ export const initializeStore = (preloadedState: Partial<StoreProps> = {}) => {
           },
           todoDeleted: (id: string) => {
             set({
-              todos: get().todos.filter((todo) => todo.id !== id),
+              todos: get().todos.filter((todo: Todo) => todo.id !== id),
             })
           },
           todoColorSelected: (id: string, color: string) => {
             set({
-              todos: get().todos.map((todo) => {
+              todos: get().todos.map<Todo>((todo: Todo) => {
                 if (todo.id !== id) {
                   return todo
                 }
@@ -122,7 +122,7 @@ export const initializeStore = (preloadedState: Partial<StoreProps> = {}) => {
           },
           markAllCompleted: () => {
             set({
-              todos: get().todos.map((todo) => ({
+              todos: get().todos.map<Todo>((todo: Todo) => ({
                 ...todo,
                 completed: true,
               })),
@@ -130,7 +130,7 @@ export const initializeStore = (preloadedState: Partial<StoreProps> = {}) => {
           },
           clearAllCompleted: () => {
             set({
-              todos: get().todos.filter((todo) => !todo.completed),
+              todos: get().todos.filter((todo: Todo) => !todo.completed),
             })
           },
           statusFilterChanged: (status: string) => {
