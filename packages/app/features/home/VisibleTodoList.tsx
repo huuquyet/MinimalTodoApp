@@ -17,7 +17,7 @@ export const VisibleTodoList = () => {
   return (
     <YStack p="$4" space>
       {todoIds.length > 0 ? (
-        <ScrollView mah={450}>
+        <ScrollView mah={380} $gtXs={{ mah: 450 }}>
           <YGroup alignSelf="center" size="$4" w="100%" space="$2" separator={<Separator />}>
             {todoIds.map((todoId) => (
               <YGroup.Item key={todoId}>
