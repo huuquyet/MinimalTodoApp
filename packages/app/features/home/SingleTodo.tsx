@@ -1,7 +1,21 @@
-import { availableColors, capitalize } from 'app/common/constants'
+import { Platform } from 'react-native'
+import { LinearGradient } from '@tamagui/linear-gradient'
+import { Check, ChevronDown, ChevronUp, Trash } from '@tamagui/lucide-icons'
+
+import { availableColors } from 'app/common/constants'
 import { useTodo } from 'app/zustand'
-import { Button, Checkbox, Paragraph, Select, Square, Tooltip, XStack } from '@my/ui'
-import { Check, ChevronDown, Trash } from '@tamagui/lucide-icons'
+import {
+  Adapt,
+  Button,
+  Checkbox,
+  Paragraph,
+  Select,
+  Sheet,
+  Square,
+  Tooltip,
+  XStack,
+  YStack,
+} from '@my/ui'
 
 export const SingleTodo = ({ id }: { id: string }) => {
   const { selectTodoById, todoColorSelected, todoDeleted, todoToggled } = useTodo()
@@ -34,9 +48,52 @@ export const SingleTodo = ({ id }: { id: string }) => {
             <Square size="$2" bc={todo.color || '$color'} />
           </Select.Value>
         </Select.Trigger>
+
+        <Adapt when="sm" platform="touch">
+          <Sheet
+            native={Platform.OS !== 'web'}
+            modal
+            dismissOnSnapToBottom
+            animationConfig={{
+              type: 'spring',
+              damping: 20,
+              mass: 1.2,
+              stiffness: 250,
+            }}
+          >
+            <Sheet.Frame>
+              <Sheet.ScrollView>
+                <Adapt.Contents />
+              </Sheet.ScrollView>
+            </Sheet.Frame>
+            <Sheet.Overlay
+              animation="lazy"
+              enterStyle={{ opacity: 0 }}
+              exitStyle={{ opacity: 0 }}
+            />
+          </Sheet>
+        </Adapt>
+
         <Select.Content zIndex={200000}>
-          <Select.ScrollUpButton />
-          <Select.Viewport>
+          <Select.ScrollUpButton
+            alignItems="center"
+            justifyContent="center"
+            position="relative"
+            width="100%"
+            height="$3"
+          >
+            <YStack zIndex={10}>
+              <ChevronUp size={20} />
+            </YStack>
+            <LinearGradient
+              start={[0, 0]}
+              end={[0, 1]}
+              fullscreen
+              colors={['$background', '$backgroundTransparent']}
+              borderRadius="$4"
+            />
+          </Select.ScrollUpButton>
+          <Select.Viewport minWidth="$8">
             <Select.Group>
               <Select.Label>Color</Select.Label>
               {availableColors.map((color, i) => (
@@ -44,13 +101,49 @@ export const SingleTodo = ({ id }: { id: string }) => {
                   <Select.ItemText>
                     <Square size="$2" bc={color} />
                   </Select.ItemText>
+                  <Select.ItemIndicator marginLeft="auto">
+                    <Check size={16} />
+                  </Select.ItemIndicator>
                 </Select.Item>
               ))}
             </Select.Group>
+
+            {Platform.OS !== 'web' && (
+              <YStack
+                position="absolute"
+                right={0}
+                top={0}
+                bottom={0}
+                alignItems="center"
+                justifyContent="center"
+                width={'$4'}
+                pointerEvents="none"
+              >
+                <ChevronDown />
+              </YStack>
+            )}
           </Select.Viewport>
-          <Select.ScrollDownButton />
+          <Select.ScrollDownButton
+            alignItems="center"
+            justifyContent="center"
+            position="relative"
+            width="100%"
+            height="$3"
+          >
+            <YStack zIndex={10}>
+              <ChevronDown size={20} />
+            </YStack>
+            <LinearGradient
+              start={[0, 0]}
+              end={[0, 1]}
+              fullscreen
+              colors={['$backgroundTransparent', '$background']}
+              borderRadius="$4"
+            />
+          </Select.ScrollDownButton>
         </Select.Content>
       </Select>
+
       <Tooltip>
         <Tooltip.Trigger>
           <Button onPress={() => todoDeleted(id)} icon={Trash} />
