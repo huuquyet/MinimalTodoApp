@@ -1,7 +1,7 @@
 import { availableColors, statusFilters } from 'app/common/constants'
 import { useTodo } from 'app/zustand'
 import { Button, Circle, Paragraph, ToggleGroup, Tooltip, XGroup, XStack, YStack } from '@my/ui'
-import { CheckCheck, Filter, Trash } from '@tamagui/lucide-icons'
+import { CheckCheck, Filter, Trash2 } from '@tamagui/lucide-icons'
 
 const StatusFilter = ({ value: status, onChange: statusFilterChanged }) => {
   return (
@@ -15,7 +15,7 @@ const StatusFilter = ({ value: status, onChange: statusFilterChanged }) => {
                 onPress={() => statusFilterChanged(item)}
                 size="$4"
                 icon={item === status ? <Filter /> : undefined}
-                fontWeight={item === status ? 'bold' : undefined}
+                chromeless={item !== status ? true : undefined}
               >
                 {key}
               </Button>
@@ -56,7 +56,7 @@ export const FilterTodo = () => {
 
   return (
     <YStack zIndex={1} p="$4" w="96%" pos="absolute" b={0} bc="$background" space>
-      <XStack jc="space-between" space>
+      <YStack $gtXs={{ fd: 'row', jc: 'space-between' }} ai="center" space>
         <Tooltip>
           <Tooltip.Trigger>
             <Button onPress={markAllCompleted} icon={CheckCheck}>
@@ -70,7 +70,7 @@ export const FilterTodo = () => {
         </Tooltip>
         <Tooltip>
           <Tooltip.Trigger>
-            <Button onPress={clearAllCompleted} icon={Trash}>
+            <Button onPress={clearAllCompleted} icon={Trash2}>
               CLEAR COMPLETED
             </Button>
           </Tooltip.Trigger>
@@ -79,7 +79,7 @@ export const FilterTodo = () => {
             <Paragraph>Clear All Completed Todos</Paragraph>
           </Tooltip.Content>
         </Tooltip>
-      </XStack>
+      </YStack>
 
       <StatusFilter value={status} onChange={statusFilterChanged} />
       <ColorFilters value={colors} onChange={colorFilterChanged} />
