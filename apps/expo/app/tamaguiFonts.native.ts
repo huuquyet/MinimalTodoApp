@@ -1,4 +1,4 @@
 export const tamaguiFonts = {
-  'Inter-Bold': require('@tamagui/font-inter/otf/Inter-Bold.otf'),
-  'Inter-Medium': require('@tamagui/font-inter/otf/Inter-Medium.otf'),
+  InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
+  InterMedium: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
 }
