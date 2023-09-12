@@ -1,6 +1,6 @@
 {
   "name": "expo-app",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "main": "index.ts",
   "private": true,
   "scripts": {
@@ -12,7 +12,7 @@
     "@my/ui": "*",
     "@react-navigation/native": "^6.1.7",
     "app": "*",
-    "expo": "^49.0.9",
+    "expo": "^49.0.10",
     "expo-constants": "~14.4.2",
     "expo-font": "~11.4.0",
     "expo-linking": "^5.0.2",
@@ -30,12 +30,12 @@
     "react-native-web": "^0.19.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.11",
+    "@babel/core": "^7.22.17",
     "@react-native-async-storage/async-storage": "~1.18.2",
     "@tamagui/babel-plugin": "latest",
     "@tamagui/font-inter": "latest",
     "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.4",
-    "metro-minify-terser": "^0.78.1"
+    "metro-minify-terser": "^0.79.0"
   }
 }

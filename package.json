@@ -1,6 +1,6 @@
 {
-  "name": "minimaltodoapp",
-  "version": "0.2.0",
+  "name": "minimaltodo",
+  "version": "0.2.1",
   "homepage": "https://huuquyet.github.io/MinimalTodoApp/",
   "private": true,
   "workspaces": [
@@ -22,7 +22,7 @@
     "web:prod:serve": "yarn workspace next-app serve"
   },
   "devDependencies": {
-    "eslint": "^8.48.0",
+    "eslint": "^8.49.0",
     "prettier": "^3.0.3",
     "turbo": "^1.10.13",
     "typescript": "^5.2.2"

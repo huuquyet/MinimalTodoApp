@@ -5,6 +5,12 @@ import { PlusCircle } from '@tamagui/lucide-icons'
 export const InputTodo = () => {
   const { text, setText, loading, setLoading, todoAdded } = useTodo()
 
+  const handleInput = (key) => {
+    if (key === 'Enter') {
+      handleButton()
+    }
+  }
+
   const handleButton = () => {
     const trimmedText = text.trim()
     if (trimmedText) {
@@ -20,13 +26,14 @@ export const InputTodo = () => {
   const placeholder = loading !== 'idle' ? '' : 'What needs to be done?'
 
   return (
-    <XStack jc="space-between" p="$2" space>
+    <XStack jc="space-between" p="$4" space>
       <Input
         value={text}
         onChangeText={(text) => setText(text)}
+        onKeyPress={(e) => handleInput(e.nativeEvent.key)}
         placeholder={placeholder}
         size="$4"
-        w="90%"
+        fg={1}
         autoFocus
         disabled={loading !== 'idle'}
       />

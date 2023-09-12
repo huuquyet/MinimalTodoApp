@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "main": "index.ts",
   "private": true,
   "sideEffects": [
@@ -9,12 +9,13 @@
   "dependencies": {
     "@my/ui": "*",
     "@react-native-async-storage/async-storage": "~1.18.2",
+    "@tamagui/linear-gradient": "latest",
     "@tamagui/lucide-icons": "latest",
-    "immer": "^10.0.2",
+    "expo-crypto": "~12.4.1",
+    "expo-linear-gradient": "~12.3.0",
     "react": "^18.2.0",
     "react-native": "^0.72.4",
     "solito": "^4.0.1",
-    "uuid": "^9.0.0",
     "zustand": "^4.4.1"
   }
 }
