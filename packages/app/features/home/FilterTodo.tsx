@@ -13,7 +13,7 @@ const StatusFilter = ({ value: status, onChange: statusFilterChanged }) => {
             <XGroup.Item key={key}>
               <Button
                 onPress={() => statusFilterChanged(item)}
-                size="$4"
+                size="$2"
                 icon={item === status ? <Filter /> : undefined}
                 chromeless={item !== status ? true : undefined}
               >
@@ -59,7 +59,7 @@ export const FilterTodo = () => {
       <YStack $gtXs={{ fd: 'row', jc: 'space-between' }} ai="center" space>
         <Tooltip>
           <Tooltip.Trigger>
-            <Button onPress={markAllCompleted} icon={CheckCheck}>
+            <Button size="$2" onPress={markAllCompleted} icon={CheckCheck}>
               MARK ALL COMPLETED
             </Button>
           </Tooltip.Trigger>
@@ -70,7 +70,7 @@ export const FilterTodo = () => {
         </Tooltip>
         <Tooltip>
           <Tooltip.Trigger>
-            <Button onPress={clearAllCompleted} icon={Trash2}>
+            <Button size="$2" onPress={clearAllCompleted} icon={Trash2}>
               CLEAR COMPLETED
             </Button>
           </Tooltip.Trigger>
