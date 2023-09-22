@@ -2331,15 +2331,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/metro-runtime@npm:2.2.9":
-  version: 2.2.9
-  resolution: "@expo/metro-runtime@npm:2.2.9"
+"@expo/metro-runtime@npm:2.2.10":
+  version: 2.2.10
+  resolution: "@expo/metro-runtime@npm:2.2.10"
   dependencies:
     "@bacons/react-views": ^1.1.3
     qs: ^6.10.3
   peerDependencies:
     react-native: "*"
-  checksum: fca625be9c3451f282a04e499f8c4461c06ab2e2001660433b8025ee3b7cec1f75b4b5f7502174631815be6ca6dcc294fe03c96c0d01d770ccdf463f08946c39
+  checksum: 6b1f8392e6e1be684d8389ef1ca44a8b91fded722d085c23feaadab060e1d19cf959c0a64c9693b463f1d9659c9a4b40e2c0bd6dbf0c3cd81db12f9af19d6e93
   languageName: node
   linkType: hard
 
@@ -2859,81 +2859,81 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@next/env@npm:13.5.1":
-  version: 13.5.1
-  resolution: "@next/env@npm:13.5.1"
-  checksum: 251859d90a953d88692129b72a1c09e9f44b2981ccab1c2d9ad67898634f8999c15b290dd6b341be9fc710cc2d25ceb9229a40de90ab0946fa2c6997144fe13f
+"@next/env@npm:13.5.2":
+  version: 13.5.2
+  resolution: "@next/env@npm:13.5.2"
+  checksum: f6ef14b7643049dafc2d53b5091e3f74eed0af14743cfd61f1db7782a99e69b5bef63f36ba700034b23656a264c7ec498aac8fa4f9377dad01e544ffa507388f
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:13.5.1":
-  version: 13.5.1
-  resolution: "@next/eslint-plugin-next@npm:13.5.1"
+"@next/eslint-plugin-next@npm:13.5.2":
+  version: 13.5.2
+  resolution: "@next/eslint-plugin-next@npm:13.5.2"
   dependencies:
     glob: 7.1.7
-  checksum: 35743d40651a4bae3ca42ad373f3c7255507f8c0f093ec6b08149295e56f2e115aa99fcd43fa645cdc8c42ad4d2687c21a09cf254146b4a28a7de9322a778da5
+  checksum: 5ce46cbbc5831950d39a129171adacc6e82bfd653133f9d32bdc7f5bd3ba8e8db298c8fe69be51f280571e58018f4631806fda7b87daa239eabb7b79a69db470
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:13.5.1":
-  version: 13.5.1
-  resolution: "@next/swc-darwin-arm64@npm:13.5.1"
+"@next/swc-darwin-arm64@npm:13.5.2":
+  version: 13.5.2
+  resolution: "@next/swc-darwin-arm64@npm:13.5.2"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:13.5.1":
-  version: 13.5.1
-  resolution: "@next/swc-darwin-x64@npm:13.5.1"
+"@next/swc-darwin-x64@npm:13.5.2":
+  version: 13.5.2
+  resolution: "@next/swc-darwin-x64@npm:13.5.2"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:13.5.1":
-  version: 13.5.1
-  resolution: "@next/swc-linux-arm64-gnu@npm:13.5.1"
+"@next/swc-linux-arm64-gnu@npm:13.5.2":
+  version: 13.5.2
+  resolution: "@next/swc-linux-arm64-gnu@npm:13.5.2"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:13.5.1":
-  version: 13.5.1
-  resolution: "@next/swc-linux-arm64-musl@npm:13.5.1"
+"@next/swc-linux-arm64-musl@npm:13.5.2":
+  version: 13.5.2
+  resolution: "@next/swc-linux-arm64-musl@npm:13.5.2"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:13.5.1":
-  version: 13.5.1
-  resolution: "@next/swc-linux-x64-gnu@npm:13.5.1"
+"@next/swc-linux-x64-gnu@npm:13.5.2":
+  version: 13.5.2
+  resolution: "@next/swc-linux-x64-gnu@npm:13.5.2"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:13.5.1":
-  version: 13.5.1
-  resolution: "@next/swc-linux-x64-musl@npm:13.5.1"
+"@next/swc-linux-x64-musl@npm:13.5.2":
+  version: 13.5.2
+  resolution: "@next/swc-linux-x64-musl@npm:13.5.2"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:13.5.1":
-  version: 13.5.1
-  resolution: "@next/swc-win32-arm64-msvc@npm:13.5.1"
+"@next/swc-win32-arm64-msvc@npm:13.5.2":
+  version: 13.5.2
+  resolution: "@next/swc-win32-arm64-msvc@npm:13.5.2"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-ia32-msvc@npm:13.5.1":
-  version: 13.5.1
-  resolution: "@next/swc-win32-ia32-msvc@npm:13.5.1"
+"@next/swc-win32-ia32-msvc@npm:13.5.2":
+  version: 13.5.2
+  resolution: "@next/swc-win32-ia32-msvc@npm:13.5.2"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:13.5.1":
-  version: 13.5.1
-  resolution: "@next/swc-win32-x64-msvc@npm:13.5.1"
+"@next/swc-win32-x64-msvc@npm:13.5.2":
+  version: 13.5.2
+  resolution: "@next/swc-win32-x64-msvc@npm:13.5.2"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -7930,11 +7930,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:^13.5.1":
-  version: 13.5.1
-  resolution: "eslint-config-next@npm:13.5.1"
+"eslint-config-next@npm:^13.5.2":
+  version: 13.5.2
+  resolution: "eslint-config-next@npm:13.5.2"
   dependencies:
-    "@next/eslint-plugin-next": 13.5.1
+    "@next/eslint-plugin-next": 13.5.2
     "@rushstack/eslint-patch": ^1.3.3
     "@typescript-eslint/parser": ^5.4.2 || ^6.0.0
     eslint-import-resolver-node: ^0.3.6
@@ -7949,7 +7949,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: a8a2d17e4a1948609e99074d948fe43ce9af8decd9e867269eb915853c4fa71733cfb800ba739d5d77b6a8e05c58a8578218184183085f1c7c4c9125051ba5de
+  checksum: c94f12c95b028c6115521d054f399dca0d83b623447c5bf7293d553463cc158a0e648d26ae8b8546f1a3bf2ababf5259fa61287e13a6775096930dbffb4da545
   languageName: node
   linkType: hard
 
@@ -8290,7 +8290,7 @@ __metadata:
     expo-constants: ~14.4.2
     expo-font: ~11.4.0
     expo-linking: ~5.0.2
-    expo-router: ^2.0.7
+    expo-router: ^2.0.8
     expo-splash-screen: ~0.20.5
     expo-status-bar: ~1.6.0
     expo-system-ui: ~2.4.0
@@ -8376,16 +8376,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-head@npm:0.0.13":
-  version: 0.0.13
-  resolution: "expo-head@npm:0.0.13"
+"expo-head@npm:0.0.14":
+  version: 0.0.14
+  resolution: "expo-head@npm:0.0.14"
   dependencies:
     react-helmet-async: ^1.3.0
   peerDependencies:
     expo: "*"
     react: "*"
     react-native: "*"
-  checksum: 01d9cb1b6a570b5bfdbd69fbc1ca96c61d9aa14b5f403680a0db7233c5ea407e490dad6458552b7329b3e0e7d8c85a5886a22dba48998a32adc731e00e621046
+  checksum: 9f4d2b00f4a969c327635cc57e451496fdc1281d6e26bde56301510eb7d3fa2364dbbf958272c3c295055bd0d780d3f500a110b655609e4c9107d0693b81a799
   languageName: node
   linkType: hard
 
@@ -8446,17 +8446,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-router@npm:^2.0.7":
-  version: 2.0.7
-  resolution: "expo-router@npm:2.0.7"
+"expo-router@npm:^2.0.8":
+  version: 2.0.8
+  resolution: "expo-router@npm:2.0.8"
   dependencies:
     "@bacons/react-views": ^1.1.3
-    "@expo/metro-runtime": 2.2.9
+    "@expo/metro-runtime": 2.2.10
     "@radix-ui/react-slot": 1.0.1
     "@react-navigation/bottom-tabs": ~6.5.7
     "@react-navigation/native": ~6.1.6
     "@react-navigation/native-stack": ~6.9.12
-    expo-head: 0.0.13
+    expo-head: 0.0.14
     expo-splash-screen: ~0.20.2
     query-string: 7.1.3
     react-helmet-async: ^1.3.0
@@ -8480,7 +8480,7 @@ __metadata:
       optional: true
     react-native-reanimated:
       optional: true
-  checksum: c122ed5be87d1c0e11534b428235fdbe1d76d470dd303e68a48ed3d42e34218fe81a7ffc277f14c300e689febc98c5c8d0b96e045d2850245893157450ccb7de
+  checksum: b7cf02fa32c765f0afe8b3cdea51f27c5a4b0258f2e2692ba90557ad1b7680d99da0a89d55b2629ae5b437859689b3f43593fd31e3f50468525d2f37848632c0
   languageName: node
   linkType: hard
 
@@ -11802,8 +11802,8 @@ __metadata:
     "@tamagui/polyfill-dev": latest
     "@types/react": ^18.2.22
     app: "*"
-    eslint-config-next: ^13.5.1
-    next: ^13.5.1
+    eslint-config-next: ^13.5.2
+    next: ^13.5.2
     raf: ^3.4.1
     react: ^18.2.0
     react-native: ^0.72.4
@@ -11815,20 +11815,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"next@npm:^13.5.1":
-  version: 13.5.1
-  resolution: "next@npm:13.5.1"
+"next@npm:^13.5.2":
+  version: 13.5.2
+  resolution: "next@npm:13.5.2"
   dependencies:
-    "@next/env": 13.5.1
-    "@next/swc-darwin-arm64": 13.5.1
-    "@next/swc-darwin-x64": 13.5.1
-    "@next/swc-linux-arm64-gnu": 13.5.1
-    "@next/swc-linux-arm64-musl": 13.5.1
-    "@next/swc-linux-x64-gnu": 13.5.1
-    "@next/swc-linux-x64-musl": 13.5.1
-    "@next/swc-win32-arm64-msvc": 13.5.1
-    "@next/swc-win32-ia32-msvc": 13.5.1
-    "@next/swc-win32-x64-msvc": 13.5.1
+    "@next/env": 13.5.2
+    "@next/swc-darwin-arm64": 13.5.2
+    "@next/swc-darwin-x64": 13.5.2
+    "@next/swc-linux-arm64-gnu": 13.5.2
+    "@next/swc-linux-arm64-musl": 13.5.2
+    "@next/swc-linux-x64-gnu": 13.5.2
+    "@next/swc-linux-x64-musl": 13.5.2
+    "@next/swc-win32-arm64-msvc": 13.5.2
+    "@next/swc-win32-ia32-msvc": 13.5.2
+    "@next/swc-win32-x64-msvc": 13.5.2
     "@swc/helpers": 0.5.2
     busboy: 1.6.0
     caniuse-lite: ^1.0.30001406
@@ -11867,7 +11867,7 @@ __metadata:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: a54aaeadb68d324107ddd2bd0c12967f06b844ef321aae4aba99f7a79406bab4ab85d51e3430106f1bc2831c55c8bf408a2352f702590d9bedb88fbdb60b2955
+  checksum: cc0635ad5aaab9fc1f4315b9506361b1abf1a12146542d6054b9434e2e892e967f19fbabd3f3763ba5e227306aa91627c1d73af089e9b853b84c74e20bb0be00
   languageName: node
   linkType: hard
 
