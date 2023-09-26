@@ -2,12 +2,13 @@ import { InputTodo } from './InputTodo'
 import { VisibleTodoList } from './VisibleTodoList'
 import { FilterTodo } from './FilterTodo'
 import { useTodo } from 'app/zustand'
-import { YStack } from '@my/ui'
+import { Button, H3, XStack, YStack } from '@my/ui'
+import { Menu, Sun } from '@tamagui/lucide-icons'
 
 export const TodoApp = () => {
   return (
-    <YStack f={1} h="100%" space>
-      {/* <AppBar /> */}
+    <YStack f={1} h="100%" bc="$backgroundStrong" space>
+      <AppBar />
       <InputTodo />
       <VisibleTodoList />
       <FilterTodo />
@@ -22,33 +23,22 @@ const AppBar = () => {
   const todosRemaining = `${incompletedCount > 0 ? ` (${incompletedCount})` : ''}`
 
   return (
-    <>
-      {/* <StatusBar bg="#3700B3" barStyle="light-content" />
-      <Box safeAreaTop bg="#0bd" />
-      <HStack
-        bg="#0bd"
-        px="1"
-        py="3"
-        justifyContent="space-between"
-        alignItems="center"
-        w="100%"
-        maxW="500"
-        shadow={2}
-        position="fixed"
-        top={0}
-        zIndex={1}
-      >
-        <Text color="white" fontSize="20" fontWeight="bold">
-          📝️ To Do List {todosRemaining}
-        </Text>
-        <Pressable onPress={toggleColorMode}>
-          <HStack>
-            <Icon as={FontAwesome5} name="sun" size="sm" color="white" />
-            <Switch value={colorMode !== 'light'} />
-            <Icon as={FontAwesome5} name="moon" size="sm" color="white" />
-          </HStack>
-        </Pressable>
-      </HStack> */}
-    </>
+    <XStack
+      pos="absolute"
+      top={0}
+      ai="center"
+      jc="center"
+      elevation="$5"
+      h="$5"
+      w="100%"
+      paddingHorizontal="$4"
+      bc="$background"
+      zIndex={1}
+      space
+    >
+      <Button icon={Menu} size="$4" onPress={() => null} circular chromeless />
+      <H3 fg={1}>📝️ To Do List {todosRemaining}</H3>
+      <Button icon={Sun} size="$4" onPress={() => null} circular chromeless />
+    </XStack>
   )
 }

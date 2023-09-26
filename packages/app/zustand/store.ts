@@ -164,24 +164,24 @@ export const useTodo = () => {
     clearAllCompleted: store.clearAllCompleted,
     statusFilterChanged: store.statusFilterChanged,
     colorFilterChanged: store.colorFilterChanged,
-    selectTodoById: (id: string) => store.todos.find((todo) => todo.id === id),
-    incompletedCount: store.todos.filter((todo) => !todo.completed).length,
+    selectTodoById: (id: string) => store.todos.find((todo: Todo) => todo.id === id),
+    incompletedCount: store.todos.filter((todo: Todo) => !todo.completed).length,
     selectFilteredIds: () => {
       const statusShowAll = store.status === statusFilters.ALL
       const statusCompleted = store.status === statusFilters.COMPLETED
       // return all todos with no filters
       if (statusShowAll && store.colors.length === 0) {
-        return store.todos.map((todo) => todo.id)
+        return store.todos.map<string>((todo: Todo) => todo.id)
       }
 
       // return either active or completed todos based on filters
       return store.todos
-        .filter((todo) => {
+        .filter((todo: Todo) => {
           const statusMatches = statusShowAll || todo.completed === statusCompleted
           const colorMatches = store.colors.length === 0 || store.colors.includes(todo.color)
           return statusMatches && colorMatches
         })
-        .map((todo) => todo.id)
+        .map<string>((todo: Todo) => todo.id)
     },
   }))
 }

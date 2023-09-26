@@ -20,7 +20,7 @@ module.exports = function (api) {
         },
       ],
       // NOTE: this is only necessary if you are using reanimated for animations
-      // 'react-native-reanimated/plugin',
+      'react-native-reanimated/plugin',
       ...(process.env.EAS_BUILD_PLATFORM === 'android'
         ? []
         : [
