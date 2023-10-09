@@ -1,13 +1,18 @@
+import { useRef } from 'react'
+import { TextInput } from 'react-native'
+
 import { useTodo } from 'app/zustand'
 import { Button, Input, Paragraph, Tooltip, XStack } from '@my/ui'
 import { PlusCircle } from '@tamagui/lucide-icons'
 
 export const InputTodo = () => {
   const { text, setText, loading, setLoading, todoAdded } = useTodo()
+  const inputRef = useRef<TextInput>(null)
 
   const handleInput = (key) => {
     if (key === 'Enter') {
       handleButton()
+      inputRef.current?.focus()
     }
   }
 
@@ -35,6 +40,7 @@ export const InputTodo = () => {
         size="$4"
         fg={1}
         autoFocus
+        ref={inputRef}
         disabled={loading !== 'idle'}
       />
       <Tooltip>
