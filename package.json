@@ -1,6 +1,6 @@
 {
   "name": "minimaltodo",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "homepage": "https://huuquyet.github.io/MinimalTodoApp/",
   "private": true,
   "workspaces": [

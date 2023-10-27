@@ -3,7 +3,7 @@
     "name": "Minimal Todo App",
     "slug": "minimaltodo",
     "scheme": "minimaltodo",
-    "version": "0.2.1",
+    "version": "0.2.4",
     "owner": "quyet",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
