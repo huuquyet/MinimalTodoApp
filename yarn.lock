@@ -13014,8 +13014,8 @@ __metadata:
   linkType: hard
 
 "react-devtools-core@npm:^4.27.2":
-  version: 4.28.0
-  resolution: "react-devtools-core@npm:4.28.0"
+  version: 4.28.4
+  resolution: "react-devtools-core@npm:4.28.4"
   dependencies:
     shell-quote: "npm:^1.6.1"
     ws: "npm:^7"
