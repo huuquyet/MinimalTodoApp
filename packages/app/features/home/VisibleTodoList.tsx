@@ -6,7 +6,7 @@ export const VisibleTodoList = () => {
   const { loading, selectFilteredIds } = useTodo()
   const todoIds = selectFilteredIds()
 
-  if (loading === 'loading') {
+  if (loading === 'LOADING') {
     return (
       <YStack ai="center">
         <Spinner size="large" />

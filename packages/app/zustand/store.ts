@@ -1,12 +1,19 @@
-import { createContext, useContext } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Crypto from 'expo-crypto'
-import { createStore } from 'zustand'
-import { useStoreWithEqualityFn } from 'zustand/traditional'
+import { create } from 'zustand'
 import { devtools, persist, createJSONStorage } from 'zustand/middleware'
-import { shallow } from 'zustand/shallow'
 
-import { availableColors, statusFilters, statusLoading } from 'app/common/constants'
+export const statusFilters = ['ALL', 'ACTIVE', 'COMPLETED'] as const
+export const statusLoading = ['IDLE', 'LOADING', 'FAILED'] as const
+export const availableColors = [
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'cyan',
+  'blue',
+  'violet',
+] as const
 
 interface Todo {
   id: string
@@ -18,9 +25,9 @@ interface Todo {
 interface StoreProps {
   todos: Todo[]
   text: string
-  status: (typeof statusFilters)['ALL' | 'ACTIVE' | 'COMPLETED']
+  status: (typeof statusFilters)[number]
   colors: Array<(typeof availableColors)[number]>
-  loading: (typeof statusLoading)['IDLE' | 'LOADING' | 'FAILED']
+  loading: (typeof statusLoading)[number]
 }
 
 interface StoreInterface extends StoreProps {
@@ -39,23 +46,9 @@ interface StoreInterface extends StoreProps {
 const getDefaultInitialState: StoreProps = {
   todos: [],
   text: '',
-  status: statusFilters.ALL,
+  status: 'ALL' as const,
   colors: [],
-  loading: statusLoading.IDLE,
-}
-
-export type StoreType = ReturnType<typeof initializeStore>
-
-const zustandContext = createContext<StoreType | null>(null)
-
-export const Provider = zustandContext.Provider
-
-export const useStore = <T>(selector: (state: StoreInterface) => T) => {
-  const store = useContext(zustandContext)
-
-  if (!store) throw new Error('Store is missing the provider')
-
-  return useStoreWithEqualityFn(store, selector, shallow)
+  loading: 'IDLE' as const,
 }
 
 const getStorageType = () => {
@@ -63,89 +56,86 @@ const getStorageType = () => {
   return isBrowser ? window.localStorage : AsyncStorage
 }
 
-export const initializeStore = (preloadedState: Partial<StoreProps> = {}) => {
-  return createStore<StoreInterface>()(
-    devtools(
-      persist(
-        (set, get) => ({
-          ...getDefaultInitialState,
-          ...preloadedState,
-          setText: (text: string) => {
-            set({ text })
-          },
-          setLoading: (loading: string) => {
-            set({ loading })
-          },
-          todoAdded: (text: string) => {
-            set({
-              todos: [
-                ...get().todos,
-                {
-                  id: Crypto.randomUUID(),
-                  text,
-                  completed: false,
-                  color: '',
-                },
-              ],
-            })
-          },
-          todoToggled: (id: string) => {
-            set({
-              todos: get().todos.map<Todo>((todo: Todo) => {
-                if (todo.id !== id) {
-                  return todo
-                }
-                return {
-                  ...todo,
-                  completed: !todo.completed,
-                }
-              }),
-            })
-          },
-          todoDeleted: (id: string) => {
-            set({
-              todos: get().todos.filter((todo: Todo) => todo.id !== id),
-            })
-          },
-          todoColorSelected: (id: string, color: string) => {
-            set({
-              todos: get().todos.map<Todo>((todo: Todo) => {
-                if (todo.id !== id) {
-                  return todo
-                }
-                return {
-                  ...todo,
-                  color,
-                }
-              }),
-            })
-          },
-          markAllCompleted: () => {
-            set({
-              todos: get().todos.map<Todo>((todo: Todo) => ({
+export const useStore = create<StoreInterface>()(
+  devtools(
+    persist(
+      (set, get) => ({
+        ...getDefaultInitialState,
+        setText: (text: string) => {
+          set({ text })
+        },
+        setLoading: (loading: string) => {
+          set({ loading })
+        },
+        todoAdded: (text: string) => {
+          set({
+            todos: [
+              ...get().todos,
+              {
+                id: Crypto.randomUUID(),
+                text,
+                completed: false,
+                color: '',
+              },
+            ],
+          })
+        },
+        todoToggled: (id: string) => {
+          set({
+            todos: get().todos.map<Todo>((todo: Todo) => {
+              if (todo.id !== id) {
+                return todo
+              }
+              return {
                 ...todo,
-                completed: true,
-              })),
-            })
-          },
-          clearAllCompleted: () => {
-            set({
-              todos: get().todos.filter((todo: Todo) => !todo.completed),
-            })
-          },
-          statusFilterChanged: (status: string) => {
-            set({ status })
-          },
-          colorFilterChanged: (colors: string[]) => {
-            set({ colors })
-          },
-        }),
-        { name: '@minimal_todo', storage: createJSONStorage(() => getStorageType()) }
-      ),
-      { enabled: false }
-    )
+                completed: !todo.completed,
+              }
+            }),
+          })
+        },
+        todoDeleted: (id: string) => {
+          set({
+            todos: get().todos.filter((todo: Todo) => todo.id !== id),
+          })
+        },
+        todoColorSelected: (id: string, color: string) => {
+          set({
+            todos: get().todos.map<Todo>((todo: Todo) => {
+              if (todo.id !== id) {
+                return todo
+              }
+              return {
+                ...todo,
+                color,
+              }
+            }),
+          })
+        },
+        markAllCompleted: () => {
+          set({
+            todos: get().todos.map<Todo>((todo: Todo) => ({
+              ...todo,
+              completed: true,
+            })),
+          })
+        },
+        clearAllCompleted: () => {
+          set({
+            todos: get().todos.filter((todo: Todo) => !todo.completed),
+          })
+        },
+        statusFilterChanged: (status: string) => {
+          set({ status })
+        },
+        colorFilterChanged: (colors: string[]) => {
+          set({ colors })
+        },
+      }),
+      { name: '@minimal_todo', storage: createJSONStorage(() => getStorageType()) }
+    ),
+    { enabled: false }
   )
-}
+)
 
 export const useTodo = () => {
   return useStore((store) => ({
@@ -167,8 +157,8 @@ export const useTodo = () => {
     selectTodoById: (id: string) => store.todos.find((todo: Todo) => todo.id === id),
     incompletedCount: store.todos.filter((todo: Todo) => !todo.completed).length,
     selectFilteredIds: () => {
-      const statusShowAll = store.status === statusFilters.ALL
-      const statusCompleted = store.status === statusFilters.COMPLETED
+      const statusShowAll = store.status === 'ALL'
+      const statusCompleted = store.status === 'COMPLETED'
       // return all todos with no filters
       if (statusShowAll && store.colors.length === 0) {
         return store.todos.map<string>((todo: Todo) => todo.id)

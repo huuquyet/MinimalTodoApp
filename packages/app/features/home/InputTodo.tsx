@@ -20,15 +20,15 @@ export const InputTodo = () => {
     const trimmedText = text.trim()
     if (trimmedText) {
       // Create and dispatch the thunk function itself
-      setLoading('loading')
+      setLoading('LOADING')
       todoAdded(trimmedText)
       // And clear out the text input
       setText('')
-      setLoading('idle')
+      setLoading('IDLE')
     }
   }
 
-  const placeholder = loading !== 'idle' ? '' : 'What needs to be done?'
+  const placeholder = loading !== 'IDLE' ? '' : 'What needs to be done?'
 
   return (
     <XStack mt="$7" jc="space-between" p="$4" space>
@@ -41,7 +41,7 @@ export const InputTodo = () => {
         fg={1}
         autoFocus
         ref={inputRef}
-        disabled={loading !== 'idle'}
+        disabled={loading !== 'IDLE'}
       />
       <Tooltip>
         <Tooltip.Trigger>

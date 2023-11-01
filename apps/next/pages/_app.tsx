@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: SolitoAppProps) {
           }}
         />
       </Head>
-      <ThemeProvider {...pageProps.initialZustandState}>
+      <ThemeProvider>
         <Component {...pageProps} />
       </ThemeProvider>
     </>

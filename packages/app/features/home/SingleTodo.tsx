@@ -2,8 +2,7 @@ import { Platform } from 'react-native'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Check, ChevronDown, ChevronUp, Trash } from '@tamagui/lucide-icons'
 
-import { availableColors } from 'app/common/constants'
-import { useTodo } from 'app/zustand'
+import { availableColors, useTodo } from 'app/zustand'
 import {
   Adapt,
   Button,
