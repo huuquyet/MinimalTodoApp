@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Crypto from 'expo-crypto'
+import { isWindowDefined } from '@tamagui/constants'
 import { create } from 'zustand'
 import { devtools, persist, createJSONStorage } from 'zustand/middleware'
 
@@ -49,11 +50,6 @@ const getDefaultInitialState: StoreProps = {
   status: 'ALL' as const,
   colors: [],
   loading: 'IDLE' as const,
-}
-
-const getStorageType = () => {
-  const isBrowser = typeof window === 'undefined' //browser or react-native
-  return isBrowser ? window.localStorage : AsyncStorage
 }
 
 export const useStore = create<StoreInterface>()(
@@ -131,7 +127,10 @@ export const useStore = create<StoreInterface>()(
           set({ colors })
         },
       }),
-      { name: '@minimal_todo', storage: createJSONStorage(() => getStorageType()) }
+      {
+        name: '@minimal_todo',
+        storage: createJSONStorage(() => (isWindowDefined ? window.localStorage : AsyncStorage)),
+      }
     ),
     { enabled: false }
   )

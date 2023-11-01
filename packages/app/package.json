@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "main": "index.ts",
   "private": true,
   "sideEffects": [
@@ -16,6 +16,6 @@
     "react": "^18.2.0",
     "react-native": "~0.72.6",
     "solito": "^4.1.3",
-    "zustand": "^4.4.4"
+    "zustand": "^4.4.5"
   }
 }
