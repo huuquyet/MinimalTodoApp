@@ -45,9 +45,7 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
         setTheme(next as any)
       }}
     >
-      <Provider disableRootThemeClass defaultTheme={theme}>
-        {children}
-      </Provider>
+      <Provider>{children}</Provider>
     </NextThemeProvider>
   )
 }

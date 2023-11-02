@@ -39,7 +39,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
         </Paragraph>
       </Button>
       <Select
-        onValueChange={(color) => todoColorSelected(id, color)}
+        onValueChange={(color: any) => todoColorSelected(id, color)}
         value={todo.color || '$color'}
       >
         <Select.Trigger w="$8" iconAfter={ChevronDown}>
@@ -95,8 +95,8 @@ export const SingleTodo = ({ id }: { id: string }) => {
           <Select.Viewport minWidth="$8">
             <Select.Group>
               <Select.Label>Color</Select.Label>
-              {availableColors.map((color, i) => (
-                <Select.Item index={i} key={color} value={color}>
+              {availableColors.map((color: any, i) => (
+                <Select.Item index={i} key={color + id} value={color}>
                   <Select.ItemText>
                     <Square size="$2" bc={color} />
                   </Select.ItemText>

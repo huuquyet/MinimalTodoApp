@@ -33,7 +33,7 @@ const ColorFilters = ({ value: colors, onChange: colorFilterChanged }) => (
       size="$4"
       onValueChange={(colors) => colorFilterChanged(colors)}
     >
-      {availableColors.map((color) => (
+      {availableColors.map((color: any) => (
         <ToggleGroup.Item key={color} value={color} aria-label={color}>
           <Circle bc={color} />
         </ToggleGroup.Item>

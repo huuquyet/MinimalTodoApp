@@ -21,7 +21,7 @@ interface Todo {
   id: string
   text: string
   completed: boolean
-  color: string
+  color: (typeof availableColors)[number]
 }
 
 interface StoreProps {
@@ -34,15 +34,15 @@ interface StoreProps {
 
 interface StoreInterface extends StoreProps {
   setText: (text: string) => void
-  setLoading: (loading: string) => void
+  setLoading: (loading: (typeof statusLoading)[number]) => void
   todoAdded: (text: string) => void
   todoToggled: (id: string) => void
   todoDeleted: (id: string) => void
-  todoColorSelected: (id: string, color: string) => void
+  todoColorSelected: (id: string, color: (typeof availableColors)[number]) => void
   markAllCompleted: () => void
   clearAllCompleted: () => void
-  statusFilterChanged: (status: string) => void
-  colorFilterChanged: (colors: string[]) => void
+  statusFilterChanged: (status: (typeof statusFilters)[number]) => void
+  colorFilterChanged: (colors: Array<(typeof availableColors)[number]>) => void
 }
 
 const getDefaultInitialState: StoreProps = {
@@ -61,7 +61,7 @@ const createTodoStore = create<StoreInterface>()(
         setText: (text: string) => {
           set({ text })
         },
-        setLoading: (loading: string) => {
+        setLoading: (loading: (typeof statusLoading)[number]) => {
           set({ loading })
         },
         todoAdded: (text: string) => {
@@ -85,7 +85,7 @@ const createTodoStore = create<StoreInterface>()(
             state.todos = state.todos.filter((todo: Todo) => todo.id !== id)
           })
         },
-        todoColorSelected: (id: string, color: string) => {
+        todoColorSelected: (id: string, color: (typeof availableColors)[number]) => {
           set((state) => {
             const todo = state.todos.find((todo: Todo) => todo.id === id)!
             todo.color = color
@@ -103,10 +103,10 @@ const createTodoStore = create<StoreInterface>()(
             state.todos = state.todos.filter((todo: Todo) => !todo.completed)
           })
         },
-        statusFilterChanged: (status: string) => {
+        statusFilterChanged: (status: (typeof statusFilters)[number]) => {
           set({ status })
         },
-        colorFilterChanged: (colors: string[]) => {
+        colorFilterChanged: (colors: Array<(typeof availableColors)[number]>) => {
           set({ colors })
         },
       })),
