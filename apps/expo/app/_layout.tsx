@@ -19,8 +19,12 @@ export default function HomeLayout() {
   return (
     <ThemeProvider value={theme === 'dark' ? DarkTheme : DefaultTheme}>
       <Provider>
-        <Stack />
-        <StatusBar style="auto" />
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}
+        />
+        <StatusBar style="auto" hidden />
       </Provider>
     </ThemeProvider>
   )

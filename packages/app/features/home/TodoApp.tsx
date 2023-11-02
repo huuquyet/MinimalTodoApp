@@ -39,7 +39,7 @@ const AppBar = () => {
       <Button icon={Menu} size="$4" onPress={() => null} circular chromeless />
       <H3 fg={1}>📝️ To Do List {todosRemaining}</H3>
       <Button
-        icon={theme === 'dark' ? Sun : Moon}
+        icon={theme === 'dark' ? <Sun /> : <Moon />}
         size="$4"
         onPress={toggleTheme}
         circular

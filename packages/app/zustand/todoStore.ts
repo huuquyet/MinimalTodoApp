@@ -5,7 +5,7 @@ import { create } from 'zustand'
 import { devtools, persist, createJSONStorage } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 
-const statusLoading = ['IDLE', 'LOADING', 'FAILED'] as const
+type statusLoading = 'IDLE' | 'LOADING' | 'FAILED'
 export const statusFilters = ['ALL', 'ACTIVE', 'COMPLETED'] as const
 export const availableColors = [
   'red',
@@ -29,12 +29,12 @@ interface StoreProps {
   text: string
   status: (typeof statusFilters)[number]
   colors: Array<(typeof availableColors)[number]>
-  loading: (typeof statusLoading)[number]
+  loading: statusLoading
 }
 
 interface StoreInterface extends StoreProps {
   setText: (text: string) => void
-  setLoading: (loading: (typeof statusLoading)[number]) => void
+  setLoading: (loading: statusLoading) => void
   todoAdded: (text: string) => void
   todoToggled: (id: string) => void
   todoDeleted: (id: string) => void
@@ -61,7 +61,7 @@ const createTodoStore = create<StoreInterface>()(
         setText: (text: string) => {
           set({ text })
         },
-        setLoading: (loading: (typeof statusLoading)[number]) => {
+        setLoading: (loading: statusLoading) => {
           set({ loading })
         },
         todoAdded: (text: string) => {
@@ -70,7 +70,7 @@ const createTodoStore = create<StoreInterface>()(
               id: Crypto.randomUUID(),
               text,
               completed: false,
-              color: '',
+              color: undefined,
             })
           })
         },
