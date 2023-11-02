@@ -1,12 +1,12 @@
 import { useRef } from 'react'
 import { TextInput } from 'react-native'
 
-import { useTodo } from 'app/zustand'
+import { useTodoStore } from 'app/zustand'
 import { Button, Input, Paragraph, Tooltip, XStack } from '@my/ui'
 import { PlusCircle } from '@tamagui/lucide-icons'
 
 export const InputTodo = () => {
-  const { text, setText, loading, setLoading, todoAdded } = useTodo()
+  const { text, setText, loading, setLoading, todoAdded } = useTodoStore()
   const inputRef = useRef<TextInput>(null)
 
   const handleInput = (key) => {

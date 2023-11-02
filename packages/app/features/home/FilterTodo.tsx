@@ -1,4 +1,4 @@
-import { availableColors, statusFilters, useTodo } from 'app/zustand'
+import { availableColors, statusFilters, useTodoStore } from 'app/zustand'
 import { Button, Circle, Paragraph, ToggleGroup, Tooltip, XGroup, XStack, YStack } from '@my/ui'
 import { CheckCheck, Filter, Trash2 } from '@tamagui/lucide-icons'
 
@@ -50,7 +50,7 @@ export const FilterTodo = () => {
     clearAllCompleted,
     colorFilterChanged,
     statusFilterChanged,
-  } = useTodo()
+  } = useTodoStore()
 
   return (
     <YStack zIndex={1} p="$4" w="100%" pos="absolute" b={0} bc="$background" space>

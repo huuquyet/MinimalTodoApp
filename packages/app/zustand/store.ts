@@ -3,9 +3,10 @@ import * as Crypto from 'expo-crypto'
 import { isWindowDefined } from '@tamagui/constants'
 import { create } from 'zustand'
 import { devtools, persist, createJSONStorage } from 'zustand/middleware'
+import { immer } from 'zustand/middleware/immer'
 
+const statusLoading = ['IDLE', 'LOADING', 'FAILED'] as const
 export const statusFilters = ['ALL', 'ACTIVE', 'COMPLETED'] as const
-export const statusLoading = ['IDLE', 'LOADING', 'FAILED'] as const
 export const availableColors = [
   'red',
   'orange',
@@ -52,10 +53,10 @@ const getDefaultInitialState: StoreProps = {
   loading: 'IDLE' as const,
 }
 
-export const useStore = create<StoreInterface>()(
+const createTodoStore = create<StoreInterface>()(
   devtools(
     persist(
-      (set, get) => ({
+      immer((set) => ({
         ...getDefaultInitialState,
         setText: (text: string) => {
           set({ text })
@@ -64,60 +65,42 @@ export const useStore = create<StoreInterface>()(
           set({ loading })
         },
         todoAdded: (text: string) => {
-          set({
-            todos: [
-              ...get().todos,
-              {
-                id: Crypto.randomUUID(),
-                text,
-                completed: false,
-                color: '',
-              },
-            ],
+          set((state) => {
+            state.todos.push({
+              id: Crypto.randomUUID(),
+              text,
+              completed: false,
+              color: '',
+            })
           })
         },
         todoToggled: (id: string) => {
-          set({
-            todos: get().todos.map<Todo>((todo: Todo) => {
-              if (todo.id !== id) {
-                return todo
-              }
-              return {
-                ...todo,
-                completed: !todo.completed,
-              }
-            }),
+          set((state) => {
+            const todo = state.todos.find((todo: Todo) => todo.id === id)!
+            todo.completed = !todo.completed
           })
         },
         todoDeleted: (id: string) => {
-          set({
-            todos: get().todos.filter((todo: Todo) => todo.id !== id),
+          set((state) => {
+            state.todos = state.todos.filter((todo: Todo) => todo.id !== id)
           })
         },
         todoColorSelected: (id: string, color: string) => {
-          set({
-            todos: get().todos.map<Todo>((todo: Todo) => {
-              if (todo.id !== id) {
-                return todo
-              }
-              return {
-                ...todo,
-                color,
-              }
-            }),
+          set((state) => {
+            const todo = state.todos.find((todo: Todo) => todo.id === id)!
+            todo.color = color
           })
         },
         markAllCompleted: () => {
-          set({
-            todos: get().todos.map<Todo>((todo: Todo) => ({
-              ...todo,
-              completed: true,
-            })),
+          set((state) => {
+            state.todos.forEach((todo: Todo) => {
+              todo.completed = true
+            })
           })
         },
         clearAllCompleted: () => {
-          set({
-            todos: get().todos.filter((todo: Todo) => !todo.completed),
+          set((state) => {
+            state.todos = state.todos.filter((todo: Todo) => !todo.completed)
           })
         },
         statusFilterChanged: (status: string) => {
@@ -126,7 +109,7 @@ export const useStore = create<StoreInterface>()(
         colorFilterChanged: (colors: string[]) => {
           set({ colors })
         },
-      }),
+      })),
       {
         name: '@minimal_todo',
         storage: createJSONStorage(() => (isWindowDefined ? window.localStorage : AsyncStorage)),
@@ -136,8 +119,8 @@ export const useStore = create<StoreInterface>()(
   )
 )
 
-export const useTodo = () => {
-  return useStore((store) => ({
+export const useTodoStore = () => {
+  return createTodoStore((store) => ({
     todos: store.todos,
     text: store.text,
     status: store.status,

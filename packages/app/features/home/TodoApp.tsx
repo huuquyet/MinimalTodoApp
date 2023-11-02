@@ -1,7 +1,7 @@
 import { InputTodo } from './InputTodo'
 import { VisibleTodoList } from './VisibleTodoList'
 import { FilterTodo } from './FilterTodo'
-import { useTodo } from 'app/zustand'
+import { useTodoStore } from 'app/zustand'
 import { Button, H3, XStack, YStack } from '@my/ui'
 import { Menu, Sun } from '@tamagui/lucide-icons'
 
@@ -17,7 +17,7 @@ export const TodoApp = () => {
 }
 
 const AppBar = () => {
-  const { incompletedCount } = useTodo()
+  const { incompletedCount } = useTodoStore()
   // const { colorMode, toggleColorMode } = useColorMode()
 
   const todosRemaining = `${incompletedCount > 0 ? ` (${incompletedCount})` : ''}`

@@ -2,7 +2,7 @@ import { Platform } from 'react-native'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Check, ChevronDown, ChevronUp, Trash } from '@tamagui/lucide-icons'
 
-import { availableColors, useTodo } from 'app/zustand'
+import { availableColors, useTodoStore } from 'app/zustand'
 import {
   Adapt,
   Button,
@@ -17,7 +17,7 @@ import {
 } from '@my/ui'
 
 export const SingleTodo = ({ id }: { id: string }) => {
-  const { selectTodoById, todoColorSelected, todoDeleted, todoToggled } = useTodo()
+  const { selectTodoById, todoColorSelected, todoDeleted, todoToggled } = useTodoStore()
   // Call our `selectTodoById` with the state _and_ the ID value
   const todo = selectTodoById(id)!
 
