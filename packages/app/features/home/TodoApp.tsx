@@ -1,9 +1,9 @@
 import { InputTodo } from './InputTodo'
 import { VisibleTodoList } from './VisibleTodoList'
 import { FilterTodo } from './FilterTodo'
-import { useTodo } from 'app/zustand'
+import { useTodoStore, useThemeStore } from 'app/zustand'
 import { Button, H3, XStack, YStack } from '@my/ui'
-import { Menu, Sun } from '@tamagui/lucide-icons'
+import { Menu, Moon, Sun } from '@tamagui/lucide-icons'
 
 export const TodoApp = () => {
   return (
@@ -17,8 +17,8 @@ export const TodoApp = () => {
 }
 
 const AppBar = () => {
-  const { incompletedCount } = useTodo()
-  // const { colorMode, toggleColorMode } = useColorMode()
+  const { incompletedCount } = useTodoStore()
+  const { theme, toggleTheme } = useThemeStore()
 
   const todosRemaining = `${incompletedCount > 0 ? ` (${incompletedCount})` : ''}`
 
@@ -38,7 +38,13 @@ const AppBar = () => {
     >
       <Button icon={Menu} size="$4" onPress={() => null} circular chromeless />
       <H3 fg={1}>📝️ To Do List {todosRemaining}</H3>
-      <Button icon={Sun} size="$4" onPress={() => null} circular chromeless />
+      <Button
+        icon={theme === 'dark' ? <Sun /> : <Moon />}
+        size="$4"
+        onPress={toggleTheme}
+        circular
+        chromeless
+      />
     </XStack>
   )
 }

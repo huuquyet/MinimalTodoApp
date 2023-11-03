@@ -22,7 +22,7 @@ const plugins = [
       if (path.includes(join('packages', 'app'))) {
         return true
       }
-    },    
+    },
     excludeReactNativeWebExports: ['Switch', 'ProgressBar', 'Picker', 'CheckBox', 'Touchable'],
 
     // adds mini-css-extract and css-minimizer-plugin, can fix issues with unique configurations
@@ -46,35 +46,10 @@ let nextConfig = {
       skipDefaultConversion: true,
     },
   },
-  transpilePackages: [
-    'expo-constants',
-    'expo-crypto',
-    'expo-linking',
-    'expo-modules-core',
-    'react-native-web',
-    'solito',
-  ],
+  transpilePackages: ['expo-crypto', 'expo-modules-core', 'react-native-web', 'solito'],
   experimental: {
     // optimizeCss: true,
     scrollRestoration: true,
-  },
-  webpack: (config, { isServer }) => {
-    config.module.rules.push(
-      {
-        test: /\.(png|svg|jpg|jpeg|gif|ogg|mp3|wav)$/i,
-        type: 'asset/source',
-      },
-      {
-        test: /\.(otf|ttf|eot|woff|woff2)$/i,
-        type: 'asset/resource',
-      }
-    )
-
-    if (process.env.DEBUG) {
-      console.debug(`Webpack rules for ${isServer ? 'server' : 'client'}:`, config.module.rules)
-    }
-
-    return config
   },
 }
 

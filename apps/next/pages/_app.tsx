@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: SolitoAppProps) {
           }}
         />
       </Head>
-      <ThemeProvider {...pageProps.initialZustandState}>
+      <ThemeProvider>
         <Component {...pageProps} />
       </ThemeProvider>
     </>
@@ -45,9 +45,7 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
         setTheme(next as any)
       }}
     >
-      <Provider disableRootThemeClass defaultTheme={theme}>
-        {children}
-      </Provider>
+      <Provider>{children}</Provider>
     </NextThemeProvider>
   )
 }

@@ -1,5 +1,4 @@
-import { availableColors, statusFilters } from 'app/common/constants'
-import { useTodo } from 'app/zustand'
+import { availableColors, statusFilters, useTodoStore } from 'app/zustand'
 import { Button, Circle, Paragraph, ToggleGroup, Tooltip, XGroup, XStack, YStack } from '@my/ui'
 import { CheckCheck, Filter, Trash2 } from '@tamagui/lucide-icons'
 
@@ -7,17 +6,16 @@ const StatusFilter = ({ value: status, onChange: statusFilterChanged }) => {
   return (
     <XStack jc="center" ai="center" space>
       <XGroup size="$4">
-        {Object.keys(statusFilters).map((key) => {
-          const item = statusFilters[key]
+        {statusFilters.map((item) => {
           return (
-            <XGroup.Item key={key}>
+            <XGroup.Item key={item}>
               <Button
                 onPress={() => statusFilterChanged(item)}
                 size="$2"
                 icon={item === status ? <Filter /> : undefined}
                 chromeless={item !== status ? true : undefined}
               >
-                {key}
+                {item}
               </Button>
             </XGroup.Item>
           )
@@ -35,7 +33,7 @@ const ColorFilters = ({ value: colors, onChange: colorFilterChanged }) => (
       size="$4"
       onValueChange={(colors) => colorFilterChanged(colors)}
     >
-      {availableColors.map((color) => (
+      {availableColors.map((color: any) => (
         <ToggleGroup.Item key={color} value={color} aria-label={color}>
           <Circle bc={color} />
         </ToggleGroup.Item>
@@ -52,7 +50,7 @@ export const FilterTodo = () => {
     clearAllCompleted,
     colorFilterChanged,
     statusFilterChanged,
-  } = useTodo()
+  } = useTodoStore()
 
   return (
     <YStack zIndex={1} p="$4" w="100%" pos="absolute" b={0} bc="$background" space>

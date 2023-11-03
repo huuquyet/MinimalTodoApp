@@ -1,28 +1,31 @@
-import { useColorScheme } from 'react-native'
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 
 import { Provider } from 'app/provider'
-import { Theme } from '@my/ui'
-import { tamaguiFonts } from './tamaguiFonts.native'
+import { useThemeStore } from 'app/zustand'
 
 export default function HomeLayout() {
-  const [loaded] = useFonts(tamaguiFonts)
-  const scheme = useColorScheme()
+  const [loaded] = useFonts({
+    InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
+    InterMedium: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
+  })
+  const { theme } = useThemeStore()
 
   if (!loaded) {
     return null
   }
   return (
-    <Provider>
-      <ThemeProvider value={scheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Theme name={scheme === 'dark' ? 'dark' : 'light'}>
-          <Stack />
-          <StatusBar style="auto" />
-        </Theme>
-      </ThemeProvider>
-    </Provider>
+    <ThemeProvider value={theme === 'dark' ? DarkTheme : DefaultTheme}>
+      <Provider>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}
+        />
+        <StatusBar style="auto" hidden />
+      </Provider>
+    </ThemeProvider>
   )
 }

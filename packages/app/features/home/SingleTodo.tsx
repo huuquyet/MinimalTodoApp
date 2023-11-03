@@ -2,8 +2,7 @@ import { Platform } from 'react-native'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Check, ChevronDown, ChevronUp, Trash } from '@tamagui/lucide-icons'
 
-import { availableColors } from 'app/common/constants'
-import { useTodo } from 'app/zustand'
+import { availableColors, useTodoStore } from 'app/zustand'
 import {
   Adapt,
   Button,
@@ -18,7 +17,7 @@ import {
 } from '@my/ui'
 
 export const SingleTodo = ({ id }: { id: string }) => {
-  const { selectTodoById, todoColorSelected, todoDeleted, todoToggled } = useTodo()
+  const { selectTodoById, todoColorSelected, todoDeleted, todoToggled } = useTodoStore()
   // Call our `selectTodoById` with the state _and_ the ID value
   const todo = selectTodoById(id)!
 
@@ -40,7 +39,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
         </Paragraph>
       </Button>
       <Select
-        onValueChange={(color) => todoColorSelected(id, color)}
+        onValueChange={(color: any) => todoColorSelected(id, color)}
         value={todo.color || '$color'}
       >
         <Select.Trigger w="$8" iconAfter={ChevronDown}>
@@ -96,8 +95,8 @@ export const SingleTodo = ({ id }: { id: string }) => {
           <Select.Viewport minWidth="$8">
             <Select.Group>
               <Select.Label>Color</Select.Label>
-              {availableColors.map((color, i) => (
-                <Select.Item index={i} key={color} value={color}>
+              {availableColors.map((color: any, i) => (
+                <Select.Item index={i} key={color + id} value={color}>
                   <Select.ItemText>
                     <Square size="$2" bc={color} />
                   </Select.ItemText>
