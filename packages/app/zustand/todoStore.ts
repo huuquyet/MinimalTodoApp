@@ -1,9 +1,9 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Crypto from 'expo-crypto'
-import { isWindowDefined } from '@tamagui/constants'
 import { create } from 'zustand'
 import { devtools, persist, createJSONStorage } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
+
+import { mmkvStorage } from './mmkvStorage'
 
 type statusLoading = 'IDLE' | 'LOADING' | 'FAILED'
 export const statusFilters = ['ALL', 'ACTIVE', 'COMPLETED'] as const
@@ -48,9 +48,9 @@ interface StoreInterface extends StoreProps {
 const getDefaultInitialState: StoreProps = {
   todos: [],
   text: '',
-  status: 'ALL' as const,
+  status: 'ALL',
   colors: [],
-  loading: 'IDLE' as const,
+  loading: 'IDLE',
 }
 
 const createTodoStore = create<StoreInterface>()(
@@ -112,7 +112,7 @@ const createTodoStore = create<StoreInterface>()(
       })),
       {
         name: '@minimal_todo',
-        storage: createJSONStorage(() => (isWindowDefined ? window.localStorage : AsyncStorage)),
+        storage: createJSONStorage(() => mmkvStorage),
       }
     ),
     { enabled: false }
