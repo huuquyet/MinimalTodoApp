@@ -53,7 +53,7 @@ const getDefaultInitialState: StoreProps = {
   loading: 'IDLE',
 }
 
-const createTodoStore = create<StoreInterface>()(
+export const createTodoStore = create<StoreInterface>()(
   devtools(
     persist(
       immer((set) => ({
@@ -113,6 +113,7 @@ const createTodoStore = create<StoreInterface>()(
       {
         name: '@minimal_todo',
         storage: createJSONStorage(() => mmkvStorage),
+        skipHydration: true,
       }
     ),
     { enabled: false }
