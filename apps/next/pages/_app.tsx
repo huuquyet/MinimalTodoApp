@@ -41,8 +41,7 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useRootTheme()
 
   useEffect(() => {
-    createThemeStore.persist.rehydrate(),
-    createTodoStore.persist.rehydrate()
+    createThemeStore.persist.rehydrate(), createTodoStore.persist.rehydrate()
   }, [])
 
   return (

@@ -53,34 +53,31 @@ export const FilterTodo = () => {
   } = useTodoStore()
 
   return (
-    <YStack zIndex={1} p="$4" w="100%" pos="absolute" b={0} bc="$background" space>
-      <YStack $gtXs={{ fd: 'row', jc: 'space-between' }} ai="center" space>
-        <Tooltip>
-          <Tooltip.Trigger>
-            <Button size="$2" onPress={markAllCompleted} icon={CheckCheck}>
-              MARK ALL COMPLETED
-            </Button>
-          </Tooltip.Trigger>
-          <Tooltip.Content>
-            <Tooltip.Arrow />
-            <Paragraph>Mark All Todos Completed</Paragraph>
-          </Tooltip.Content>
-        </Tooltip>
-        <Tooltip>
-          <Tooltip.Trigger>
-            <Button size="$2" onPress={clearAllCompleted} icon={Trash2}>
-              CLEAR COMPLETED
-            </Button>
-          </Tooltip.Trigger>
-          <Tooltip.Content>
-            <Tooltip.Arrow />
-            <Paragraph>Clear All Completed Todos</Paragraph>
-          </Tooltip.Content>
-        </Tooltip>
+    <YStack p="$4" $gtXs={{ fd: 'row', jc: 'space-between' }} ai="center" space>
+      <Tooltip>
+        <Tooltip.Trigger>
+          <Button size="$4" onPress={markAllCompleted} icon={CheckCheck} circular />
+        </Tooltip.Trigger>
+        <Tooltip.Content>
+          <Tooltip.Arrow />
+          <Paragraph>Mark All Todos Completed</Paragraph>
+        </Tooltip.Content>
+      </Tooltip>
+
+      <YStack space>
+        <StatusFilter value={status} onChange={statusFilterChanged} />
+        <ColorFilters value={colors} onChange={colorFilterChanged} />
       </YStack>
 
-      <StatusFilter value={status} onChange={statusFilterChanged} />
-      <ColorFilters value={colors} onChange={colorFilterChanged} />
+      <Tooltip>
+        <Tooltip.Trigger>
+          <Button size="$4" onPress={clearAllCompleted} icon={Trash2} circular />
+        </Tooltip.Trigger>
+        <Tooltip.Content>
+          <Tooltip.Arrow />
+          <Paragraph>Clear All Completed Todos</Paragraph>
+        </Tooltip.Content>
+      </Tooltip>
     </YStack>
   )
 }

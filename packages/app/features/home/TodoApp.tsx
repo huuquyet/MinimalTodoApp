@@ -10,10 +10,15 @@ export const TodoApp = () => {
     <YStack f={1} h="100%" bc="$backgroundStrong" space>
       <AppBar />
       <InputTodo />
-      <VisibleTodoList />
       <FilterTodo />
+      <VisibleTodoList />
     </YStack>
   )
+}
+
+const icons = {
+  dark: Moon,
+  light: Sun,
 }
 
 const AppBar = () => {
@@ -25,26 +30,20 @@ const AppBar = () => {
   return (
     <XStack
       pos="absolute"
-      top={0}
+      t={0}
       ai="center"
       jc="center"
       elevation="$5"
       h="$5"
       w="100%"
-      paddingHorizontal="$4"
+      p="$4"
       bc="$background"
       zIndex={1}
       space
     >
       <Button icon={Menu} size="$4" onPress={() => null} circular chromeless />
       <H3 fg={1}>📝️ To Do List {todosRemaining}</H3>
-      <Button
-        icon={theme === 'dark' ? <Sun /> : <Moon />}
-        size="$4"
-        onPress={toggleTheme}
-        circular
-        chromeless
-      />
+      <Button icon={icons[theme]} size="$4" onPress={toggleTheme} circular chromeless />
     </XStack>
   )
 }
