@@ -1,8 +1,7 @@
-import { Platform } from 'react-native'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Check, ChevronDown, ChevronUp, Trash } from '@tamagui/lucide-icons'
+import { Platform } from 'react-native'
 
-import { availableColors, useTodoStore } from 'app/zustand'
 import {
   Adapt,
   Button,
@@ -15,6 +14,7 @@ import {
   XStack,
   YStack,
 } from '@my/ui'
+import { availableColors, useTodoStore } from 'app/zustand'
 
 export const SingleTodo = ({ id }: { id: string }) => {
   const { selectTodoById, todoColorSelected, todoDeleted, todoToggled } = useTodoStore()
@@ -49,17 +49,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
         </Select.Trigger>
 
         <Adapt when="sm" platform="touch">
-          <Sheet
-            native={Platform.OS !== 'web'}
-            modal
-            dismissOnSnapToBottom
-            animationConfig={{
-              type: 'spring',
-              damping: 20,
-              mass: 1.2,
-              stiffness: 250,
-            }}
-          >
+          <Sheet native={Platform.OS !== 'web'} modal dismissOnSnapToBottom animation="quick">
             <Sheet.Frame>
               <Sheet.ScrollView>
                 <Adapt.Contents />
@@ -73,15 +63,9 @@ export const SingleTodo = ({ id }: { id: string }) => {
           </Sheet>
         </Adapt>
 
-        <Select.Content zIndex={200000}>
-          <Select.ScrollUpButton
-            alignItems="center"
-            justifyContent="center"
-            position="relative"
-            width="100%"
-            height="$3"
-          >
-            <YStack zIndex={10}>
+        <Select.Content zi={200000}>
+          <Select.ScrollUpButton ai="center" jc="center" pos="relative" w="100%" h="$3">
+            <YStack zi={10}>
               <ChevronUp size={20} />
             </YStack>
             <LinearGradient
@@ -92,7 +76,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
               borderRadius="$4"
             />
           </Select.ScrollUpButton>
-          <Select.Viewport minWidth="$8">
+          <Select.Viewport miw="$8">
             <Select.Group>
               <Select.Label>Color</Select.Label>
               {availableColors.map((color: any, i) => (
@@ -100,7 +84,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
                   <Select.ItemText>
                     <Square size="$2" bc={color} />
                   </Select.ItemText>
-                  <Select.ItemIndicator marginLeft="auto">
+                  <Select.ItemIndicator ml="auto">
                     <Check size={16} />
                   </Select.ItemIndicator>
                 </Select.Item>
@@ -108,28 +92,13 @@ export const SingleTodo = ({ id }: { id: string }) => {
             </Select.Group>
 
             {Platform.OS !== 'web' && (
-              <YStack
-                position="absolute"
-                right={0}
-                top={0}
-                bottom={0}
-                alignItems="center"
-                justifyContent="center"
-                width={'$4'}
-                pointerEvents="none"
-              >
+              <YStack pos="absolute" r={0} t={0} b={0} ai="center" jc="center" w="$4" pe="none">
                 <ChevronDown />
               </YStack>
             )}
           </Select.Viewport>
-          <Select.ScrollDownButton
-            alignItems="center"
-            justifyContent="center"
-            position="relative"
-            width="100%"
-            height="$3"
-          >
-            <YStack zIndex={10}>
+          <Select.ScrollDownButton ai="center" jc="center" pos="relative" w="100%" h="$3">
+            <YStack zi={10}>
               <ChevronDown size={20} />
             </YStack>
             <LinearGradient

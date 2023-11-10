@@ -1,6 +1,6 @@
-import { SingleTodo } from './SingleTodo'
-import { useTodoStore } from 'app/zustand'
 import { Paragraph, ScrollView, Separator, Spinner, YGroup, YStack } from '@my/ui'
+import { useTodoStore } from 'app/zustand'
+import { SingleTodo } from './SingleTodo'
 
 export const VisibleTodoList = () => {
   const { loading, selectFilteredIds } = useTodoStore()
@@ -17,8 +17,8 @@ export const VisibleTodoList = () => {
   return (
     <YStack paddingHorizontal="$4" space>
       {todoIds.length > 0 ? (
-        <ScrollView mah={450}>
-          <YGroup alignSelf="center" size="$4" w="100%" space="$2" separator={<Separator />}>
+        <ScrollView>
+          <YGroup als="center" size="$4" w="100%" space="$2" separator={<Separator />}>
             {todoIds.map((todoId) => (
               <YGroup.Item key={todoId}>
                 <SingleTodo id={todoId} />

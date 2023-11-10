@@ -1,9 +1,9 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Crypto from 'expo-crypto'
-import { isWindowDefined } from '@tamagui/constants'
 import { create } from 'zustand'
-import { devtools, persist, createJSONStorage } from 'zustand/middleware'
+import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
+
+import { mmkvStorage } from './mmkvStorage'
 
 type statusLoading = 'IDLE' | 'LOADING' | 'FAILED'
 export const statusFilters = ['ALL', 'ACTIVE', 'COMPLETED'] as const
@@ -21,14 +21,14 @@ interface Todo {
   id: string
   text: string
   completed: boolean
-  color: (typeof availableColors)[number]
+  color: typeof availableColors[number]
 }
 
 interface StoreProps {
   todos: Todo[]
   text: string
-  status: (typeof statusFilters)[number]
-  colors: Array<(typeof availableColors)[number]>
+  status: typeof statusFilters[number]
+  colors: Array<typeof availableColors[number]>
   loading: statusLoading
 }
 
@@ -38,22 +38,22 @@ interface StoreInterface extends StoreProps {
   todoAdded: (text: string) => void
   todoToggled: (id: string) => void
   todoDeleted: (id: string) => void
-  todoColorSelected: (id: string, color: (typeof availableColors)[number]) => void
+  todoColorSelected: (id: string, color: typeof availableColors[number]) => void
   markAllCompleted: () => void
   clearAllCompleted: () => void
-  statusFilterChanged: (status: (typeof statusFilters)[number]) => void
-  colorFilterChanged: (colors: Array<(typeof availableColors)[number]>) => void
+  statusFilterChanged: (status: typeof statusFilters[number]) => void
+  colorFilterChanged: (colors: Array<typeof availableColors[number]>) => void
 }
 
 const getDefaultInitialState: StoreProps = {
   todos: [],
   text: '',
-  status: 'ALL' as const,
+  status: 'ALL',
   colors: [],
-  loading: 'IDLE' as const,
+  loading: 'IDLE',
 }
 
-const createTodoStore = create<StoreInterface>()(
+export const createTodoStore = create<StoreInterface>()(
   devtools(
     persist(
       immer((set) => ({
@@ -85,7 +85,7 @@ const createTodoStore = create<StoreInterface>()(
             state.todos = state.todos.filter((todo: Todo) => todo.id !== id)
           })
         },
-        todoColorSelected: (id: string, color: (typeof availableColors)[number]) => {
+        todoColorSelected: (id: string, color: typeof availableColors[number]) => {
           set((state) => {
             const todo = state.todos.find((todo: Todo) => todo.id === id)!
             todo.color = color
@@ -93,9 +93,9 @@ const createTodoStore = create<StoreInterface>()(
         },
         markAllCompleted: () => {
           set((state) => {
-            state.todos.forEach((todo: Todo) => {
+            for (const todo of state.todos) {
               todo.completed = true
-            })
+            }
           })
         },
         clearAllCompleted: () => {
@@ -103,16 +103,17 @@ const createTodoStore = create<StoreInterface>()(
             state.todos = state.todos.filter((todo: Todo) => !todo.completed)
           })
         },
-        statusFilterChanged: (status: (typeof statusFilters)[number]) => {
+        statusFilterChanged: (status: typeof statusFilters[number]) => {
           set({ status })
         },
-        colorFilterChanged: (colors: Array<(typeof availableColors)[number]>) => {
+        colorFilterChanged: (colors: Array<typeof availableColors[number]>) => {
           set({ colors })
         },
       })),
       {
         name: '@minimal_todo',
-        storage: createJSONStorage(() => (isWindowDefined ? window.localStorage : AsyncStorage)),
+        storage: createJSONStorage(() => mmkvStorage),
+        skipHydration: true,
       }
     ),
     { enabled: false }
