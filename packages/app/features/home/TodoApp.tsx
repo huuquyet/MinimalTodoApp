@@ -38,7 +38,7 @@ const AppBar = () => {
       w="100%"
       p="$4"
       bc="$background"
-      zIndex={1}
+      zi={1}
       space
     >
       <Button icon={Menu} size="$4" onPress={() => null} circular chromeless />
