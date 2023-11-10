@@ -1,12 +1,12 @@
-import { useEffect } from 'react'
-import Head from 'next/head'
-import type { SolitoAppProps } from 'solito'
-import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
 import '@tamagui/core/reset.css'
 import '@tamagui/font-inter/css/400.css'
 import '@tamagui/font-inter/css/700.css'
 import '@tamagui/font-inter/css/800.css'
 import '@tamagui/font-inter/css/900.css'
+import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
+import Head from 'next/head'
+import { useEffect } from 'react'
+import type { SolitoAppProps } from 'solito'
 
 import { Provider } from 'app/provider'
 import { createThemeStore, createTodoStore } from 'app/zustand'
@@ -41,7 +41,8 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useRootTheme()
 
   useEffect(() => {
-    createThemeStore.persist.rehydrate(), createTodoStore.persist.rehydrate()
+    createThemeStore.persist.rehydrate()
+    createTodoStore.persist.rehydrate()
   }, [])
 
   return (

@@ -1,9 +1,9 @@
-import { InputTodo } from './InputTodo'
-import { VisibleTodoList } from './VisibleTodoList'
-import { FilterTodo } from './FilterTodo'
-import { useTodoStore, useThemeStore } from 'app/zustand'
 import { Button, H3, XStack, YStack } from '@my/ui'
 import { Menu, Moon, Sun } from '@tamagui/lucide-icons'
+import { useThemeStore, useTodoStore } from 'app/zustand'
+import { FilterTodo } from './FilterTodo'
+import { InputTodo } from './InputTodo'
+import { VisibleTodoList } from './VisibleTodoList'
 
 export const TodoApp = () => {
   return (

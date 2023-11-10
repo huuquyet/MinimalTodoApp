@@ -4,10 +4,10 @@
   "main": "index.ts",
   "private": true,
   "scripts": {
-    "start": "npx expo start -c",
-    "android": "npx expo run:android",
-    "ios": "npx expo run:ios",
-    "eject": "npx expo eject"
+    "start": "yarn dlx expo start -c",
+    "android": "yarn dlx expo run:android",
+    "ios": "yarn dlx expo run:ios",
+    "eject": "yarn dlx expo eject"
   },
   "dependencies": {
     "@my/ui": "*",

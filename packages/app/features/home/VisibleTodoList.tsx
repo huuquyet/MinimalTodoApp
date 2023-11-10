@@ -1,6 +1,6 @@
-import { SingleTodo } from './SingleTodo'
-import { useTodoStore } from 'app/zustand'
 import { Paragraph, ScrollView, Separator, Spinner, YGroup, YStack } from '@my/ui'
+import { useTodoStore } from 'app/zustand'
+import { SingleTodo } from './SingleTodo'
 
 export const VisibleTodoList = () => {
   const { loading, selectFilteredIds } = useTodoStore()

@@ -1,5 +1,5 @@
-import { createFont, GenericFont } from 'tamagui'
 import { createInterFont } from '@tamagui/font-inter'
+import { GenericFont, createFont } from 'tamagui'
 
 const genericFontSizes = {
   1: 10,

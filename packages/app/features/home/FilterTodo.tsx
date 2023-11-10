@@ -1,6 +1,6 @@
-import { availableColors, statusFilters, useTodoStore } from 'app/zustand'
 import { Button, Circle, Paragraph, ToggleGroup, Tooltip, XGroup, XStack, YStack } from '@my/ui'
 import { CheckCheck, Filter, Trash2 } from '@tamagui/lucide-icons'
+import { availableColors, statusFilters, useTodoStore } from 'app/zustand'
 
 const StatusFilter = ({ value: status, onChange: statusFilterChanged }) => {
   return (

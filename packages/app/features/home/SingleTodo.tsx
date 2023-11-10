@@ -1,8 +1,7 @@
-import { Platform } from 'react-native'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Check, ChevronDown, ChevronUp, Trash } from '@tamagui/lucide-icons'
+import { Platform } from 'react-native'
 
-import { availableColors, useTodoStore } from 'app/zustand'
 import {
   Adapt,
   Button,
@@ -15,6 +14,7 @@ import {
   XStack,
   YStack,
 } from '@my/ui'
+import { availableColors, useTodoStore } from 'app/zustand'
 
 export const SingleTodo = ({ id }: { id: string }) => {
   const { selectTodoById, todoColorSelected, todoDeleted, todoToggled } = useTodoStore()
@@ -49,12 +49,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
         </Select.Trigger>
 
         <Adapt when="sm" platform="touch">
-          <Sheet
-            native={Platform.OS !== 'web'}
-            modal
-            dismissOnSnapToBottom
-            animation="quick"
-          >
+          <Sheet native={Platform.OS !== 'web'} modal dismissOnSnapToBottom animation="quick">
             <Sheet.Frame>
               <Sheet.ScrollView>
                 <Adapt.Contents />
@@ -69,13 +64,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
         </Adapt>
 
         <Select.Content zi={200000}>
-          <Select.ScrollUpButton
-            ai="center"
-            jc="center"
-            pos="relative"
-            w="100%"
-            h="$3"
-          >
+          <Select.ScrollUpButton ai="center" jc="center" pos="relative" w="100%" h="$3">
             <YStack zi={10}>
               <ChevronUp size={20} />
             </YStack>
@@ -103,27 +92,12 @@ export const SingleTodo = ({ id }: { id: string }) => {
             </Select.Group>
 
             {Platform.OS !== 'web' && (
-              <YStack
-                pos="absolute"
-                r={0}
-                t={0}
-                b={0}
-                ai="center"
-                jc="center"
-                w='$4'
-                pe="none"
-              >
+              <YStack pos="absolute" r={0} t={0} b={0} ai="center" jc="center" w="$4" pe="none">
                 <ChevronDown />
               </YStack>
             )}
           </Select.Viewport>
-          <Select.ScrollDownButton
-            ai="center"
-            jc="center"
-            pos="relative"
-            w="100%"
-            h="$3"
-          >
+          <Select.ScrollDownButton ai="center" jc="center" pos="relative" w="100%" h="$3">
             <YStack zi={10}>
               <ChevronDown size={20} />
             </YStack>

@@ -4,10 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "cd ../.. && yarn build && cd apps/next && next build",
+    "build": "cd ../.. && yarn build && yarn workspace next-app run next build",
     "start": "next start",
-    "serve": "NODE_ENV=production next start --port 8151",
-    "lint": "next lint"
+    "serve": "NODE_ENV=production next start --port 8151"
   },
   "dependencies": {
     "@my/ui": "*",
@@ -26,7 +25,6 @@
     "@tamagui/core": "latest",
     "@tamagui/font-inter": "latest",
     "@tamagui/next-plugin": "latest",
-    "@types/react": "^18.2.33",
-    "eslint-config-next": "^14.0.1"
+    "@types/react": "^18.2.33"
   }
 }
