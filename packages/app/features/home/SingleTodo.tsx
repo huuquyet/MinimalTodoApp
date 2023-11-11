@@ -1,7 +1,3 @@
-import { LinearGradient } from '@tamagui/linear-gradient'
-import { Check, ChevronDown, ChevronUp, Trash } from '@tamagui/lucide-icons'
-import { Platform } from 'react-native'
-
 import {
   Adapt,
   Button,
@@ -14,7 +10,10 @@ import {
   XStack,
   YStack,
 } from '@my/ui'
+import { LinearGradient } from '@tamagui/linear-gradient'
+import { Check, ChevronDown, ChevronUp, Trash } from '@tamagui/lucide-icons'
 import { availableColors, useTodoStore } from 'app/zustand'
+import { Platform } from 'react-native'
 
 export const SingleTodo = ({ id }: { id: string }) => {
   const { selectTodoById, todoColorSelected, todoDeleted, todoToggled } = useTodoStore()

@@ -1,6 +1,5 @@
-import Head from 'next/head'
-
 import { TodoApp } from 'app/features/home'
+import Head from 'next/head'
 
 export default function Page() {
   return (

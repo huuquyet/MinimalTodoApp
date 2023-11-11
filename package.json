@@ -8,11 +8,11 @@
     "packages/*"
   ],
   "scripts": {
-    "android": "yarn workspace expo-app run android",
+    "android": "yarn workspace expo-app android",
     "build": "yarn workspaces foreach --all --exclude next-app run build",
-    "check:expo": "yarn workspace expo-app run expo install --check",
-    "ios": "yarn workspace expo-app run ios",
-    "native": "yarn workspace expo-app run start",
+    "check:expo": "yarn workspace expo-app expo install --check",
+    "ios": "yarn workspace expo-app ios",
+    "native": "yarn workspace expo-app start",
     "lint": "yarn dlx @biomejs/biome check --apply .",
     "postinstall": "yarn build",
     "rm:nodemodule": "rm -rf .yarn/cache node_modules apps/expo/node_modules apps/next/node_modules apps/next/.tamagui packages/app/node_modules packages/ui/node_modules yarn.lock",
@@ -21,9 +21,9 @@
     "vercel:install": "yarn set version berry && yarn install",
     "watch": "yarn workspaces foreach -pi run watch",
     "web": "yarn build && yarn workspace next-app run next",
-    "web:extract": "DISABLE_EXTRACTION=false yarn workspace next-app run dev",
-    "web:prod": "yarn workspace next-app run build",
-    "web:prod:serve": "yarn workspace next-app run serve"
+    "web:extract": "DISABLE_EXTRACTION=false yarn workspace next-app dev",
+    "web:prod": "yarn workspace next-app build",
+    "web:prod:serve": "yarn workspace next-app serve"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.3.3",

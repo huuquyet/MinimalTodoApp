@@ -1,10 +1,9 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
+import { Provider } from 'app/provider'
+import { useThemeStore } from 'app/zustand'
 import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
-
-import { Provider } from 'app/provider'
-import { useThemeStore } from 'app/zustand'
 
 export default function HomeLayout() {
   const [loaded] = useFonts({
