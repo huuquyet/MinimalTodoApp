@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@my/ui": "*",
-    "@tamagui/next-theme": "latest",
     "app": "*",
     "next": "^14.0.2",
     "react": "^18.2.0",

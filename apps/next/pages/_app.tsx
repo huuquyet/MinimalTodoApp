@@ -3,11 +3,8 @@ import '@tamagui/font-inter/css/400.css'
 import '@tamagui/font-inter/css/700.css'
 import '@tamagui/font-inter/css/800.css'
 import '@tamagui/font-inter/css/900.css'
-import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
 import { Provider } from 'app/provider'
-import { createThemeStore, createTodoStore } from 'app/zustand'
 import Head from 'next/head'
-import { useEffect } from 'react'
 import type { SolitoAppProps } from 'solito'
 
 if (process.env.NODE_ENV === 'production') {
@@ -29,29 +26,10 @@ function MyApp({ Component, pageProps }: SolitoAppProps) {
           }}
         />
       </Head>
-      <ThemeProvider>
+      <Provider>
         <Component {...pageProps} />
-      </ThemeProvider>
+      </Provider>
     </>
-  )
-}
-
-function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useRootTheme()
-
-  useEffect(() => {
-    createThemeStore.persist.rehydrate()
-    createTodoStore.persist.rehydrate()
-  }, [])
-
-  return (
-    <NextThemeProvider
-      onChangeTheme={(next) => {
-        setTheme(next as any)
-      }}
-    >
-      <Provider>{children}</Provider>
-    </NextThemeProvider>
   )
 }
 

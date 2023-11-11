@@ -1,5 +1,5 @@
 import { Button, H3, XStack, YStack } from '@my/ui'
-import { Menu, Moon, Sun } from '@tamagui/lucide-icons'
+import { Menu, Monitor, Moon, Sun } from '@tamagui/lucide-icons'
 import { useThemeStore, useTodoStore } from 'app/zustand'
 import { FilterTodo } from './FilterTodo'
 import { InputTodo } from './InputTodo'
@@ -17,8 +17,9 @@ export const TodoApp = () => {
 }
 
 const icons = {
-  dark: Moon,
-  light: Sun,
+  dark: <Moon />,
+  light: <Sun />,
+  system: <Monitor />,
 }
 
 const AppBar = () => {

@@ -8,8 +8,10 @@
   ],
   "dependencies": {
     "@my/ui": "*",
+    "@react-navigation/native": "^6.1.9",
     "@tamagui/linear-gradient": "latest",
     "@tamagui/lucide-icons": "latest",
+    "@tamagui/next-theme": "latest",
     "expo-crypto": "~12.4.1",
     "expo-linear-gradient": "~12.3.0",
     "immer": "^10.0.3",

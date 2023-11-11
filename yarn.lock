@@ -5470,8 +5470,10 @@ __metadata:
   resolution: "app@workspace:packages/app"
   dependencies:
     "@my/ui": "npm:*"
+    "@react-navigation/native": "npm:^6.1.9"
     "@tamagui/linear-gradient": "npm:latest"
     "@tamagui/lucide-icons": "npm:latest"
+    "@tamagui/next-theme": "npm:latest"
     expo-crypto: "npm:~12.4.1"
     expo-linear-gradient: "npm:~12.3.0"
     immer: "npm:^10.0.3"
@@ -7770,7 +7772,6 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.23.3"
     "@my/ui": "npm:*"
-    "@react-navigation/native": "npm:^6.1.9"
     "@tamagui/babel-plugin": "npm:latest"
     "@tamagui/font-inter": "npm:latest"
     app: "npm:*"
@@ -10886,7 +10887,6 @@ __metadata:
     "@tamagui/core": "npm:latest"
     "@tamagui/font-inter": "npm:latest"
     "@tamagui/next-plugin": "npm:latest"
-    "@tamagui/next-theme": "npm:latest"
     "@types/react": "npm:^18.2.37"
     app: "npm:*"
     next: "npm:^14.0.2"
