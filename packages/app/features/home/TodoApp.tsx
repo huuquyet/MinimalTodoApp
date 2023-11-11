@@ -23,7 +23,7 @@ const icons = {
 
 const AppBar = () => {
   const { incompletedCount } = useTodoStore()
-  const { theme, toggleTheme } = useThemeStore()
+  const { scheme, toggleScheme } = useThemeStore()
 
   const todosRemaining = `${incompletedCount > 0 ? ` (${incompletedCount})` : ''}`
 
@@ -43,7 +43,7 @@ const AppBar = () => {
     >
       <Button icon={Menu} size="$4" onPress={() => null} circular chromeless />
       <H3 fg={1}>📝️ To Do List {todosRemaining}</H3>
-      <Button icon={icons[theme]} size="$4" onPress={toggleTheme} circular chromeless />
+      <Button icon={icons[scheme]} size="$4" onPress={toggleScheme} circular chromeless />
     </XStack>
   )
 }

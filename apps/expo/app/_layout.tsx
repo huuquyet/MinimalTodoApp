@@ -10,13 +10,13 @@ export default function HomeLayout() {
     InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
     InterMedium: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
   })
-  const { theme } = useThemeStore()
+  const { scheme } = useThemeStore()
 
   if (!loaded) {
     return null
   }
   return (
-    <ThemeProvider value={theme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={scheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Provider>
         <Stack
           screenOptions={{
