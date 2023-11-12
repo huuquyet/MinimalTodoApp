@@ -3,10 +3,10 @@
   "version": "0.2.6",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "yarn build:all && next build",
-    "start": "next start",
-    "serve": "NODE_ENV=production next start --port 8151"
+    "n:dev": "next dev",
+    "n:build": "yarn build:all && next build",
+    "n:start": "next start",
+    "n:serve": "NODE_ENV=production next start --port 8151"
   },
   "dependencies": {
     "@my/ui": "*",

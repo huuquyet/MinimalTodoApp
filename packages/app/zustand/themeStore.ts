@@ -10,7 +10,7 @@ export interface ThemeInterface {
 }
 
 const getDefaultState = {
-  scheme: 'dark' as mode,
+  scheme: 'system' as mode,
 }
 
 export const createThemeStore = create<ThemeInterface>()(

@@ -4,9 +4,10 @@
   "main": "index.ts",
   "private": true,
   "scripts": {
-    "start": "expo start -c",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
+    "e:doctor": "npx expo-doctor@latest",
+    "e:start": "expo start -c",
+    "e:android": "expo run:android",
+    "e:ios": "expo run:ios",
     "eject": "expo eject"
   },
   "dependencies": {

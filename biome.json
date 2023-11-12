@@ -8,8 +8,8 @@
     "ignoreUnknown": true,
     "ignore": [
       "**/node_modules",
+      ".pnp*",
       "**/.git",
-      "**/.vscode",
       "**/.tamagui",
       "**/.next",
       "**/dist",
