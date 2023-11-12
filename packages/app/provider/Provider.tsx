@@ -4,8 +4,10 @@ import config from 'app/tamagui.config'
 import { createThemeStore, createTodoStore, type mode, useThemeStore } from 'app/zustand'
 import { useEffect } from 'react'
 import { Appearance } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
+  const { top, left, right } = useSafeAreaInsets()
   const { scheme } = useThemeStore()
 
   const current = () => {
@@ -21,7 +23,12 @@ export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'conf
   }, [])
 
   return (
-    <ThemeProvider value={current() === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider
+      value={current() === 'dark' ? DarkTheme : DefaultTheme}
+      t={top}
+      l={left}
+      r={right}
+    >
       <TamaguiProvider defaultTheme={current()} config={config} disableInjectCSS {...rest}>
         {children}
       </TamaguiProvider>

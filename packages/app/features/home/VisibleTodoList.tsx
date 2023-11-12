@@ -15,9 +15,9 @@ export const VisibleTodoList = () => {
   }
 
   return (
-    <ScrollView px="$4" space>
+    <ScrollView space>
       {todoIds.length > 0 ? (
-        <YGroup als="center" size="$4" w="100%" space separator={<Separator />}>
+        <YGroup px="$4" als="center" size="$4" w="100%" space separator={<Separator />}>
           {todoIds.map((todoId) => (
             <YGroup.Item key={todoId}>
               <SingleTodo id={todoId} />

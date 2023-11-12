@@ -30,7 +30,7 @@ export const InputTodo = () => {
   const placeholder = loading !== 'IDLE' ? '' : 'What needs to be done?'
 
   return (
-    <XStack mt="$7" jc="space-between" p="$4" space>
+    <XStack mt="$9" jc="space-between" px="$4" space>
       <Input
         value={text}
         onChangeText={(text) => setText(text)}

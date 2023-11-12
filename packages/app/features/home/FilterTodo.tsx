@@ -53,7 +53,7 @@ export const FilterTodo = () => {
   } = useTodoStore()
 
   return (
-    <XStack p="$4" jc="space-between" ai="center" space>
+    <XStack px="$4" jc="space-between" ai="center" space>
       <Tooltip>
         <Tooltip.Trigger>
           <Button size="$4" onPress={markAllCompleted} icon={CheckCheck} circular />
