@@ -72,7 +72,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
               end={[0, 1]}
               fullscreen
               colors={['$background', '$backgroundTransparent']}
-              borderRadius="$4"
+              br="$4"
             />
           </Select.ScrollUpButton>
           <Select.Viewport miw="$8">
@@ -105,7 +105,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
               end={[0, 1]}
               fullscreen
               colors={['$backgroundTransparent', '$background']}
-              borderRadius="$4"
+              br="$4"
             />
           </Select.ScrollDownButton>
         </Select.Content>

@@ -8,29 +8,27 @@ export const VisibleTodoList = () => {
 
   if (loading === 'LOADING') {
     return (
-      <YStack ai="center">
+      <YStack ai="center" space>
         <Spinner size="large" />
       </YStack>
     )
   }
 
   return (
-    <YStack paddingHorizontal="$4" space>
+    <ScrollView px="$4" space>
       {todoIds.length > 0 ? (
-        <ScrollView>
-          <YGroup als="center" size="$4" w="100%" space="$2" separator={<Separator />}>
-            {todoIds.map((todoId) => (
-              <YGroup.Item key={todoId}>
-                <SingleTodo id={todoId} />
-              </YGroup.Item>
-            ))}
-          </YGroup>
-        </ScrollView>
+        <YGroup als="center" size="$4" w="100%" space separator={<Separator />}>
+          {todoIds.map((todoId) => (
+            <YGroup.Item key={todoId}>
+              <SingleTodo id={todoId} />
+            </YGroup.Item>
+          ))}
+        </YGroup>
       ) : (
-        <YStack p="$4" ai="center">
+        <YStack p="$4" ai="center" space>
           <Paragraph>Nothing here 🙈🐘</Paragraph>
         </YStack>
       )}
-    </YStack>
+    </ScrollView>
   )
 }

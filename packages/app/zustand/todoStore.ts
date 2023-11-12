@@ -6,15 +6,7 @@ import { mmkvStorage } from './mmkvStorage'
 
 type statusLoading = 'IDLE' | 'LOADING' | 'FAILED'
 export const statusFilters = ['ALL', 'ACTIVE', 'COMPLETED'] as const
-export const availableColors = [
-  'red',
-  'orange',
-  'yellow',
-  'green',
-  'cyan',
-  'blue',
-  'violet',
-] as const
+export const availableColors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue'] as const
 
 interface Todo {
   id: string
