@@ -4,16 +4,17 @@
   "main": "index.ts",
   "private": true,
   "scripts": {
-    "e:doctor": "npx expo-doctor@latest",
-    "e:start": "expo start -c",
     "e:android": "expo run:android",
+    "e:check": "npx expo install --check",
+    "e:doctor": "npx expo-doctor@latest",
+    "e:eject": "expo eject",
     "e:ios": "expo run:ios",
-    "eject": "expo eject"
+    "e:start": "expo start -c"
   },
   "dependencies": {
     "@my/ui": "*",
     "app": "*",
-    "expo": "^49.0.18",
+    "expo": "^49.0.19",
     "expo-font": "~11.4.0",
     "expo-linking": "~5.0.2",
     "expo-router": "^2.0.12",

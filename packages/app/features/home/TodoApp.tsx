@@ -37,6 +37,7 @@ const AppBar = () => {
       elevation="$5"
       h="$5"
       w="100%"
+      px="$4"
       bc="$background"
       zi={1}
       space
