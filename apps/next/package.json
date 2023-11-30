@@ -24,6 +24,6 @@
     "@tamagui/core": "latest",
     "@tamagui/font-inter": "latest",
     "@tamagui/next-plugin": "latest",
-    "@types/react": "^18.2.38"
+    "@types/react": "^18.2.39"
   }
 }
