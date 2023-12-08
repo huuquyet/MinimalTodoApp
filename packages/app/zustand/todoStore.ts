@@ -12,14 +12,14 @@ interface Todo {
   id: string
   text: string
   completed: boolean
-  color: typeof availableColors[number]
+  color: (typeof availableColors)[number]
 }
 
 interface StoreProps {
   todos: Todo[]
   text: string
-  status: typeof statusFilters[number]
-  colors: Array<typeof availableColors[number]>
+  status: (typeof statusFilters)[number]
+  colors: Array<(typeof availableColors)[number]>
   loading: statusLoading
 }
 
@@ -29,11 +29,11 @@ interface StoreInterface extends StoreProps {
   todoAdded: (text: string) => void
   todoToggled: (id: string) => void
   todoDeleted: (id: string) => void
-  todoColorSelected: (id: string, color: typeof availableColors[number]) => void
+  todoColorSelected: (id: string, color: (typeof availableColors)[number]) => void
   markAllCompleted: () => void
   clearAllCompleted: () => void
-  statusFilterChanged: (status: typeof statusFilters[number]) => void
-  colorFilterChanged: (colors: Array<typeof availableColors[number]>) => void
+  statusFilterChanged: (status: (typeof statusFilters)[number]) => void
+  colorFilterChanged: (colors: Array<(typeof availableColors)[number]>) => void
 }
 
 const getDefaultInitialState: StoreProps = {
@@ -76,7 +76,7 @@ export const createTodoStore = create<StoreInterface>()(
             state.todos = state.todos.filter((todo: Todo) => todo.id !== id)
           })
         },
-        todoColorSelected: (id: string, color: typeof availableColors[number]) => {
+        todoColorSelected: (id: string, color: (typeof availableColors)[number]) => {
           set((state) => {
             const todo = state.todos.find((todo: Todo) => todo.id === id)!
             todo.color = color
@@ -94,10 +94,10 @@ export const createTodoStore = create<StoreInterface>()(
             state.todos = state.todos.filter((todo: Todo) => !todo.completed)
           })
         },
-        statusFilterChanged: (status: typeof statusFilters[number]) => {
+        statusFilterChanged: (status: (typeof statusFilters)[number]) => {
           set({ status })
         },
-        colorFilterChanged: (colors: Array<typeof availableColors[number]>) => {
+        colorFilterChanged: (colors: Array<(typeof availableColors)[number]>) => {
           set({ colors })
         },
       })),
