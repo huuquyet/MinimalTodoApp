@@ -5389,7 +5389,7 @@ __metadata:
     immer: "npm:^10.0.3"
     react: "npm:^18.2.0"
     react-native: "npm:~0.72.6"
-    react-native-mmkv: "npm:^2.10.2"
+    react-native-mmkv: "npm:^2.11.0"
     solito: "npm:^4.1.3"
     zustand: "npm:^4.4.5"
   languageName: unknown
@@ -7700,7 +7700,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     react-native: "npm:0.72.6"
     react-native-gesture-handler: "npm:~2.12.1"
-    react-native-mmkv: "npm:^2.10.2"
+    react-native-mmkv: "npm:^2.11.0"
     react-native-reanimated: "npm:~3.3.0"
     react-native-safe-area-context: "npm:4.6.3"
     react-native-screens: "npm:~3.22.1"
@@ -12060,13 +12060,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-mmkv@npm:^2.10.2":
-  version: 2.10.2
-  resolution: "react-native-mmkv@npm:2.10.2"
+"react-native-mmkv@npm:^2.11.0":
+  version: 2.11.0
+  resolution: "react-native-mmkv@npm:2.11.0"
   peerDependencies:
     react: "*"
     react-native: ">=0.71.0"
-  checksum: 0b592b06c02eccfb7edad16efa6ef683ac72bf9db2abbb48540b792176fe9e7a6a64c96741aa1cff596933ce479180f54e273031bb281bb310ae45b11b70df75
+  checksum: bdf2622ae2b579b8dad7ecb5e43e9698db11a2a4248dd1f5ef696e9af1b753b83a23e1e4e0e0cdc04b052dbef53813046348eb2b74ae1aa032ae33122bf200f5
   languageName: node
   linkType: hard
 
