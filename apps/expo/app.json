@@ -37,7 +37,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": ""
+        "projectId": "5c2b415a-5db0-49ec-a50a-693c295a0460"
       }
     },
     "plugins": [
@@ -46,7 +46,8 @@
         {
           "origin": "https://minimaltodoapp.vercel.app/"
         }
-      ]
+      ],
+      "expo-font"
     ]
   }
 }
