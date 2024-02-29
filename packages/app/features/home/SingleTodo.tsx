@@ -1,7 +1,3 @@
-import { LinearGradient } from '@tamagui/linear-gradient'
-import { Check, ChevronDown, ChevronUp, Trash } from '@tamagui/lucide-icons'
-import { Platform } from 'react-native'
-
 import {
   Adapt,
   Button,
@@ -14,7 +10,10 @@ import {
   XStack,
   YStack,
 } from '@my/ui'
+import { LinearGradient } from '@tamagui/linear-gradient'
+import { Check, ChevronDown, ChevronUp, Trash } from '@tamagui/lucide-icons'
 import { availableColors, useTodoStore } from 'app/zustand'
+import { Platform } from 'react-native'
 
 export const SingleTodo = ({ id }: { id: string }) => {
   const { selectTodoById, todoColorSelected, todoDeleted, todoToggled } = useTodoStore()
@@ -73,7 +72,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
               end={[0, 1]}
               fullscreen
               colors={['$background', '$backgroundTransparent']}
-              borderRadius="$4"
+              br="$4"
             />
           </Select.ScrollUpButton>
           <Select.Viewport miw="$8">
@@ -106,7 +105,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
               end={[0, 1]}
               fullscreen
               colors={['$backgroundTransparent', '$background']}
-              borderRadius="$4"
+              br="$4"
             />
           </Select.ScrollDownButton>
         </Select.Content>

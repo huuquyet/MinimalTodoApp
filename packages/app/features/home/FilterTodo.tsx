@@ -53,7 +53,7 @@ export const FilterTodo = () => {
   } = useTodoStore()
 
   return (
-    <YStack p="$4" $gtXs={{ fd: 'row', jc: 'space-between' }} ai="center" space>
+    <XStack px="$4" jc="space-between" ai="center" space>
       <Tooltip>
         <Tooltip.Trigger>
           <Button size="$4" onPress={markAllCompleted} icon={CheckCheck} circular />
@@ -78,6 +78,6 @@ export const FilterTodo = () => {
           <Paragraph>Clear All Completed Todos</Paragraph>
         </Tooltip.Content>
       </Tooltip>
-    </YStack>
+    </XStack>
   )
 }
