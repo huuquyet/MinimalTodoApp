@@ -21,7 +21,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
   const todo = selectTodoById(id)!
 
   return (
-    <XStack ai="center" space>
+    <XStack ai="center" gap>
       <Checkbox
         checked={todo.completed}
         onCheckedChange={() => todoToggled(id)}

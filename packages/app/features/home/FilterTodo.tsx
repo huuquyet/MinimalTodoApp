@@ -4,7 +4,7 @@ import { availableColors, statusFilters, useTodoStore } from 'app/zustand'
 
 const StatusFilter = ({ value: status, onChange: statusFilterChanged }) => {
   return (
-    <XStack jc="center" ai="center" space>
+    <XStack jc="center" ai="center" gap>
       <XGroup size="$4">
         {statusFilters.map((item) => {
           return (
@@ -26,7 +26,7 @@ const StatusFilter = ({ value: status, onChange: statusFilterChanged }) => {
 }
 
 const ColorFilters = ({ value: colors, onChange: colorFilterChanged }) => (
-  <XStack jc="center" ai="center" space>
+  <XStack jc="center" ai="center" gap>
     <ToggleGroup
       type="multiple"
       orientation="horizontal"
@@ -53,7 +53,7 @@ export const FilterTodo = () => {
   } = useTodoStore()
 
   return (
-    <XStack px="$4" jc="space-between" ai="center" space>
+    <XStack px="$4" jc="space-between" ai="center" gap>
       <Tooltip>
         <Tooltip.Trigger>
           <Button size="$4" onPress={markAllCompleted} icon={CheckCheck} circular />
@@ -64,7 +64,7 @@ export const FilterTodo = () => {
         </Tooltip.Content>
       </Tooltip>
 
-      <YStack space>
+      <YStack gap>
         <StatusFilter value={status} onChange={statusFilterChanged} />
         <ColorFilters value={colors} onChange={colorFilterChanged} />
       </YStack>

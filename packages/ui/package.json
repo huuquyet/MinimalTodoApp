@@ -8,12 +8,11 @@
   "files": ["types", "dist"],
   "sideEffects": ["*.css"],
   "scripts": {
-    "ui:build": "tamagui-build",
-    "ui:watch": "tamagui-build --watch"
+    "ui:build": "tamagui-build --skip-types",
+    "ui:watch": "tamagui-build --skip-types --watch"
   },
   "dependencies": {
     "@tamagui/animations-moti": "latest",
-    "@tamagui/config": "latest",
     "@tamagui/font-inter": "latest",
     "@tamagui/react-native-media-driver": "latest",
     "@tamagui/shorthands": "latest",

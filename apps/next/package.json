@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "@expo/next-adapter": "^5.0.2",
-    "@tamagui/config": "latest",
     "@tamagui/core": "latest",
     "@tamagui/font-inter": "latest",
     "@tamagui/next-plugin": "latest",

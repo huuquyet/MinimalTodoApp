@@ -4,6 +4,7 @@ const { withExpo } = require('@expo/next-adapter')
 const { join } = require('node:path')
 const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
 })
 
 const boolVals = {
@@ -15,6 +16,8 @@ const disableExtraction =
   boolVals[process.env.DISABLE_EXTRACTION] ?? process.env.NODE_ENV === 'development'
 
 const plugins = [
+  withExpo,
+  withPWA,
   withTamagui({
     config: '../../packages/ui/src/tamagui.config.ts',
     components: ['tamagui', '@my/ui'],
@@ -42,7 +45,7 @@ let nextConfig = {
       skipDefaultConversion: true,
     },
   },
-  transpilePackages: ['expo-constants', 'expo-modules-core', 'react-native-web', 'solito'],
+  transpilePackages: ['expo-crypto', 'expo-modules-core', 'react-native-web', 'solito'],
   experimental: {
     // optimizeCss: true,
     scrollRestoration: true,
@@ -57,4 +60,4 @@ for (const plugin of plugins) {
   }
 }
 
-module.exports = withExpo(withPWA(nextConfig))
+module.exports = nextConfig
