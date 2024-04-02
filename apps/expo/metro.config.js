@@ -1,6 +1,6 @@
 // Learn more https://docs.expo.dev/guides/monorepos
 // Learn more https://docs.expo.io/guides/customizing-metro
-
+/** @type {import('expo/metro-config').MetroConfig} */
 const { getDefaultConfig } = require('expo/metro-config')
 const path = require('node:path')
 
@@ -9,7 +9,6 @@ const projectRoot = __dirname
 // This can be replaced with `find-yarn-workspace-root`
 const workspaceRoot = path.resolve(projectRoot, '../..')
 
-/** @type {import('expo/metro-config').MetroConfig} */
 const config = getDefaultConfig(projectRoot, {
   // [Web-only]: Enables CSS support in Metro.
   isCSSEnabled: true,
@@ -32,4 +31,10 @@ config.resolver.sourceExts.push('mjs')
 config.transformer = { ...config.transformer, unstable_allowRequireContext: true }
 config.transformer.minifierPath = require.resolve('metro-minify-terser')
 
-module.exports = config
+// add nice web support with optimizing compiler + CSS extraction
+const { withTamagui } = require('@tamagui/metro-plugin')
+module.exports = withTamagui(config, {
+  components: ['tamagui'],
+  config: '../../packages/ui/src/tamagui.config.ts',
+  outputCSS: './tamagui-web.css',
+})

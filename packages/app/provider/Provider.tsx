@@ -1,13 +1,9 @@
-import { TamaguiProvider, type TamaguiProviderProps } from '@my/ui'
+import { TamaguiProvider, type TamaguiProviderProps, config } from '@my/ui'
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
-import config from 'app/tamagui.config'
-import { createThemeStore, createTodoStore, type mode, useThemeStore } from 'app/zustand'
-import { useEffect } from 'react'
+import { type mode, useThemeStore } from 'app/zustand'
 import { Appearance } from 'react-native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
-  const { top, left, right } = useSafeAreaInsets()
   const { scheme } = useThemeStore()
 
   const current = () => {
@@ -17,18 +13,8 @@ export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'conf
     return scheme
   }
 
-  useEffect(() => {
-    createThemeStore.persist.rehydrate()
-    createTodoStore.persist.rehydrate()
-  }, [])
-
   return (
-    <ThemeProvider
-      value={current() === 'dark' ? DarkTheme : DefaultTheme}
-      t={top}
-      l={left}
-      r={right}
-    >
+    <ThemeProvider value={current() === 'dark' ? DarkTheme : DefaultTheme}>
       <TamaguiProvider defaultTheme={current()} config={config} disableInjectCSS {...rest}>
         {children}
       </TamaguiProvider>
