@@ -1,6 +1,6 @@
 {
   "name": "next-app",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "n:build": "yarn ui:build && next build",
@@ -9,21 +9,22 @@
     "n:start": "next start"
   },
   "dependencies": {
+    "@ducanh2912/next-pwa": "^10.2.5",
     "@my/ui": "*",
+    "@vercel/analytics": "^1.2.2",
     "app": "*",
-    "next": "^14.1.0",
+    "next": "^14.1.4",
     "react": "^18.2.0",
-    "react-native": "0.73.4",
-    "solito": "^4.2.1",
+    "react-native": "0.73.6",
+    "solito": "^4.2.2",
     "tamagui": "latest",
     "vercel": "latest"
   },
   "devDependencies": {
     "@expo/next-adapter": "^5.0.2",
-    "@tamagui/config": "latest",
     "@tamagui/core": "latest",
     "@tamagui/font-inter": "latest",
     "@tamagui/next-plugin": "latest",
-    "@types/react": "^18.2.60"
+    "@types/react": "^18.2.73"
   }
 }

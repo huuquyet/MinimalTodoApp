@@ -2,7 +2,7 @@ import { Button, Input, Paragraph, Tooltip, XStack } from '@my/ui'
 import { PlusCircle } from '@tamagui/lucide-icons'
 import { useTodoStore } from 'app/zustand'
 import { useRef } from 'react'
-import { TextInput } from 'react-native'
+import type { TextInput } from 'react-native'
 
 export const InputTodo = () => {
   const { text, setText, loading, setLoading, todoAdded } = useTodoStore()
@@ -30,7 +30,7 @@ export const InputTodo = () => {
   const placeholder = loading !== 'IDLE' ? '' : 'What needs to be done?'
 
   return (
-    <XStack mt="$9" jc="space-between" px="$4" space>
+    <XStack mt="$9" jc="space-between" px="$4" gap="$4">
       <Input
         value={text}
         onChangeText={(text) => setText(text)}

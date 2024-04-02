@@ -7,7 +7,7 @@ import { VisibleTodoList } from './VisibleTodoList'
 
 export const TodoApp = () => {
   return (
-    <YStack f={1} bc="$backgroundStrong" space>
+    <YStack f={1} bc="$backgroundStrong" gap="$4">
       <AppBar />
       <InputTodo />
       <FilterTodo />
@@ -40,7 +40,7 @@ const AppBar = () => {
       px="$4"
       bc="$background"
       zi={1}
-      space
+      gap
     >
       <Button icon={Menu} size="$4" onPress={() => null} circular chromeless />
       <H3 fg={1}>📝️ To Do List {todosRemaining}</H3>

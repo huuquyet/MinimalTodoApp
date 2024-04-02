@@ -1,8 +1,6 @@
-import { TamaguiProvider, TamaguiProviderProps } from '@my/ui'
+import { TamaguiProvider, type TamaguiProviderProps, config } from '@my/ui'
 import { NextThemeProvider, useRootTheme, useThemeSetting } from '@tamagui/next-theme'
-import config from 'app/tamagui.config'
-import { createThemeStore, createTodoStore, type mode, useThemeStore } from 'app/zustand'
-import { useEffect } from 'react'
+import { type mode, useThemeStore } from 'app/zustand'
 
 export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
   const [theme, setTheme] = useRootTheme()
@@ -16,17 +14,8 @@ export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'conf
     return scheme
   }
 
-  useEffect(() => {
-    createThemeStore.persist.rehydrate()
-    createTodoStore.persist.rehydrate()
-  }, [])
-
   return (
-    <NextThemeProvider
-      onChangeTheme={(next) => {
-        setTheme(next as any)
-      }}
-    >
+    <NextThemeProvider onChangeTheme={setTheme as any}>
       <TamaguiProvider defaultTheme={current()} config={config} disableInjectCSS {...rest}>
         {children}
       </TamaguiProvider>
