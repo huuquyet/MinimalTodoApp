@@ -21,14 +21,13 @@
     "vscode": "yarn dlx @yarnpkg/sdks vscode",
     "watch": "yarn ui:watch",
     "web": "yarn build && yarn n:dev",
-    "web:extract": "DISABLE_EXTRACTION=false yarn n:build",
-    "web:prod": "yarn n:start",
+    "web:extract": "DISABLE_EXTRACTION=false yarn n:dev",
+    "web:prod": "yarn n:build",
     "web:prod:serve": "yarn n:serve"
   },
   "devDependencies": {
     "@babel/types": "^7.24.0",
-    "@biomejs/biome": "^1.6.3",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.5"
   },
   "packageManager": "yarn@4.1.1"
 }
