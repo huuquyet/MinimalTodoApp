@@ -5,29 +5,23 @@
   "private": true,
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {
-    "android": "yarn e:android",
-    "build": "yarn ui:build",
-    "check:expo": "yarn e:check",
-    "clean": "yarn cache clean && git clean -xdf",
-    "doctor": "yarn dlx @yarnpkg/doctor && yarn e:doctor",
-    "ios": "yarn e:ios",
-    "native": "yarn e:start",
-    "lint": "yarn dlx @biomejs/biome check --apply .",
-    "postinstall": "yarn build",
-    "update": "yarn upgrade-interactive",
-    "upgrade:tamagui": "yarn up '*tamagui*'@latest '@tamagui/*'@latest",
-    "upgrade:tamagui:canary": "yarn up '*tamagui*'@canary '@tamagui/*'@canary",
-    "vercel:install": "yarn set version berry && yarn install",
-    "vscode": "yarn dlx @yarnpkg/sdks vscode",
-    "watch": "yarn ui:watch",
-    "web": "yarn build && yarn n:dev",
-    "web:extract": "DISABLE_EXTRACTION=false yarn n:dev",
-    "web:prod": "yarn n:build",
-    "web:prod:serve": "yarn n:serve"
+    "android": "bun --filter 'expo*' android",
+    "build:pkg": "bun --filter '*/ui' build",
+    "check:expo": "bun --filter 'expo*' check",
+    "clean": "git clean -xdf",
+    "doctor": "bun --filter 'expo*' doctor",
+    "ios": "bun --filter 'expo*' ios",
+    "native": "bun --filter 'expo*' start",
+    "lint": "bunx @biomejs/biome check --write .",
+    "postinstall": "bun build:pkg",
+    "watch": "bun --filter '*/ui' watch",
+    "web": "bun build:pkg && bun --filter 'next*' dev",
+    "web:extract": "DISABLE_EXTRACTION=false bun --filter 'next*' dev",
+    "web:prod": "bun build:pkg && bun --filter 'next*' build",
+    "web:prod:serve": "bun --filter 'next*' serve"
   },
   "devDependencies": {
     "@babel/types": "^7.24.5",
     "typescript": "^5.4.5"
-  },
-  "packageManager": "yarn@4.1.1"
+  }
 }

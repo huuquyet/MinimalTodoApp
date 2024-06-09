@@ -4,11 +4,11 @@
   "main": "index.ts",
   "private": true,
   "scripts": {
-    "e:android": "expo run android",
-    "e:check": "expo install --fix",
-    "e:doctor": "yarn dlx expo-doctor@latest",
-    "e:ios": "expo run ios",
-    "e:start": "expo start -c"
+    "android": "bunx expo run android",
+    "check": "bunx expo install --fix",
+    "doctor": "bunx expo-doctor@latest",
+    "ios": "bunx expo run ios",
+    "start": "bunx expo start -c"
   },
   "dependencies": {
     "@my/ui": "*",
