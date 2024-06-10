@@ -3,7 +3,7 @@
     "name": "Minimal Todo App",
     "slug": "minimaltodo",
     "scheme": "minimaltodo",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "owner": "quyet",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -48,6 +48,9 @@
         }
       ],
       "expo-font"
-    ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
   }
 }

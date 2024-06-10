@@ -1,20 +1,21 @@
 {
   "name": "next-app",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "scripts": {
-    "build": "bunx next build",
+    "build": "bunx next build --no-lint",
     "dev": "bunx next dev",
     "serve": "NODE_ENV=production bunx next start --port 8151",
     "start": "bunx next start"
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.7",
-    "@my/ui": "*",
+    "@my/ui": "workspace:*",
     "@vercel/analytics": "^1.2.2",
-    "app": "*",
+    "app": "workspace:*",
     "next": "^14.2.3",
     "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-native": "0.73.6",
     "solito": "^4.2.2",
     "tamagui": "latest"
@@ -25,6 +26,6 @@
     "@tamagui/font-inter": "latest",
     "@tamagui/next-plugin": "latest",
     "@types/react": "^18.3.1",
-    "vercel": "latest"
+    "typescript": "~5.3.3"
   }
 }

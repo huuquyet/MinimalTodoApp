@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
-    "composite": true,
+    "strict": true,
     "noEmit": true
   },
   "include": ["**/*.ts", "**/*.tsx"]

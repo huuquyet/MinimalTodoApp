@@ -7,11 +7,10 @@
   "files": {
     "ignoreUnknown": true,
     "ignore": [
+      "./.vercel",
       "./**/node_modules",
-      "./.pnp*",
-      "./.tamagui",
+      "./**/.tamagui",
       "./**/.next",
-      "./**/.vercel",
       "./**/dist",
       "./**/types",
       "./**/public",

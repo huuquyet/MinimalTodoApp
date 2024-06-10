@@ -3,7 +3,7 @@ import { NextThemeProvider, useRootTheme, useThemeSetting } from '@tamagui/next-
 import { type mode, useThemeStore } from 'app/zustand'
 
 export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
-  const [theme, setTheme] = useRootTheme()
+  const [_, setTheme] = useRootTheme()
   const themeSetting = useThemeSetting()!
   const { scheme } = useThemeStore()
 
