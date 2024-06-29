@@ -12,16 +12,16 @@
     "watch": "bunx tamagui-build --skip-types --watch"
   },
   "dependencies": {
-    "@tamagui/animations-moti": "^1.100.3",
-    "@tamagui/font-inter": "^1.100.3",
-    "@tamagui/react-native-media-driver": "^1.100.3",
-    "@tamagui/shorthands": "^1.100.3",
-    "@tamagui/themes": "^1.100.3",
+    "@tamagui/animations-moti": "latest",
+    "@tamagui/font-inter": "latest",
+    "@tamagui/react-native-media-driver": "latest",
+    "@tamagui/shorthands": "latest",
+    "@tamagui/themes": "latest",
     "burnt": "^0.12.2",
     "react-native-reanimated": "~3.10.1",
-    "tamagui": "^1.100.3"
+    "tamagui": "latest"
   },
   "devDependencies": {
-    "@tamagui/build": "^1.100.3"
+    "@tamagui/build": "latest"
   }
 }

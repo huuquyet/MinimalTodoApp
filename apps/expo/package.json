@@ -13,9 +13,9 @@
   "dependencies": {
     "@my/ui": "workspace:*",
     "app": "workspace:*",
-    "expo": "^51.0.11",
+    "expo": "^51.0.17",
     "expo-font": "^12.0.7",
-    "expo-router": "^3.5.15",
+    "expo-router": "^3.5.16",
     "expo-splash-screen": "^0.27.5",
     "expo-status-bar": "^1.12.1",
     "expo-system-ui": "^3.0.6",
@@ -33,13 +33,14 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.7",
-    "@tamagui/babel-plugin": "^1.100.3",
-    "@tamagui/font-inter": "^1.100.3",
-    "@tamagui/metro-plugin": "^1.100.3",
+    "@tamagui/babel-plugin": "latest",
+    "@tamagui/font-inter": "latest",
+    "@tamagui/metro-plugin": "latest",
     "@types/react": "~18.2.79",
     "@types/react-native": "^0.73.0",
     "babel-plugin-module-resolver": "^5.0.2",
     "babel-plugin-transform-inline-environment-variables": "^0.4.4",
+    "babel-preset-expo": "^11.0.10",
     "metro-minify-terser": "^0.80.9"
   }
 }

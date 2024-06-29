@@ -7,9 +7,9 @@
   "dependencies": {
     "@my/ui": "workspace:*",
     "@react-navigation/native": "^6.1.17",
-    "@tamagui/linear-gradient": "^1.100.3",
-    "@tamagui/lucide-icons": "^1.100.3",
-    "@tamagui/next-theme": "^1.100.3",
+    "@tamagui/linear-gradient": "latest",
+    "@tamagui/lucide-icons": "latest",
+    "@tamagui/next-theme": "latest",
     "expo-crypto": "^13.0.2",
     "expo-linear-gradient": "^13.0.2",
     "immer": "^10.1.1",
