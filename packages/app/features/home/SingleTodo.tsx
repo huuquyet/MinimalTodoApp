@@ -21,7 +21,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
   const todo = selectTodoById(id)!
 
   return (
-    <XStack ai="center" gap>
+    <XStack ai="center" gap="$4">
       <Checkbox
         checked={todo.completed}
         onCheckedChange={() => todoToggled(id)}
@@ -72,7 +72,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
               end={[0, 1]}
               fullscreen
               colors={['$background', '$backgroundTransparent']}
-              br="$4"
+              borderRadius="$4"
             />
           </Select.ScrollUpButton>
           <Select.Viewport miw="$8">
@@ -105,7 +105,7 @@ export const SingleTodo = ({ id }: { id: string }) => {
               end={[0, 1]}
               fullscreen
               colors={['$backgroundTransparent', '$background']}
-              br="$4"
+              borderRadius="$4"
             />
           </Select.ScrollDownButton>
         </Select.Content>

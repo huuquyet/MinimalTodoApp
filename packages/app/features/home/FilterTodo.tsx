@@ -4,7 +4,7 @@ import { availableColors, statusFilters, useTodoStore } from 'app/zustand'
 
 const StatusFilter = ({ value: status, onChange: statusFilterChanged }) => {
   return (
-    <XStack jc="center" ai="center" gap>
+    <XStack jc="center" ai="center" gap="$4">
       <XGroup size="$4">
         {statusFilters.map((item) => {
           return (
@@ -26,12 +26,12 @@ const StatusFilter = ({ value: status, onChange: statusFilterChanged }) => {
 }
 
 const ColorFilters = ({ value: colors, onChange: colorFilterChanged }) => (
-  <XStack jc="center" ai="center" gap>
+  <XStack jc="center" ai="center" gap="$4">
     <ToggleGroup
       type="multiple"
       orientation="horizontal"
       size="$4"
-      onValueChange={(colors) => colorFilterChanged(colors)}
+      onValueChange={() => colorFilterChanged(colors)}
     >
       {availableColors.map((color: any) => (
         <ToggleGroup.Item key={color} value={color} aria-label={color}>
@@ -53,7 +53,7 @@ export const FilterTodo = () => {
   } = useTodoStore()
 
   return (
-    <XStack px="$4" jc="space-between" ai="center" gap>
+    <XStack px="$4" jc="space-between" ai="center" gap="$4">
       <Tooltip>
         <Tooltip.Trigger>
           <Button size="$4" onPress={markAllCompleted} icon={CheckCheck} circular />
@@ -64,7 +64,7 @@ export const FilterTodo = () => {
         </Tooltip.Content>
       </Tooltip>
 
-      <YStack gap>
+      <YStack gap="$4">
         <StatusFilter value={status} onChange={statusFilterChanged} />
         <ColorFilters value={colors} onChange={colorFilterChanged} />
       </YStack>

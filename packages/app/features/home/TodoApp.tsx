@@ -40,7 +40,7 @@ const AppBar = () => {
       px="$4"
       bc="$background"
       zi={1}
-      gap
+      gap="$4"
     >
       <Button icon={Menu} size="$4" onPress={() => null} circular chromeless />
       <H3 fg={1}>📝️ To Do List {todosRemaining}</H3>
